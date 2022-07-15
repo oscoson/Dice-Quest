@@ -75,6 +75,7 @@ public class PieceMover : MonoBehaviour
     public void StartCombat()
     {
         Debug.Log("Start Combat");
+        CombatManager.Instance.StartCombat();
     }
 
     public void ExitLevel()
