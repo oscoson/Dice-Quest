@@ -11,7 +11,7 @@ public class DiceDrawSystem : MonoBehaviour
     List<PlayableDie> playPile;
     List<PlayableDie> discardBag;
 
-    readonly int drawAmount = 6;
+    readonly int drawAmount = 5;
 
     // Start is called before the first frame update
     void Awake()
