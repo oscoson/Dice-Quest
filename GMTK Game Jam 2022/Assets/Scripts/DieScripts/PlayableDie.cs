@@ -6,5 +6,6 @@ public abstract class PlayableDie : MonoBehaviour
 {
     [SerializeField] DiceSO diceData;
 
+
     public abstract void Roll();
 }

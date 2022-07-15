@@ -5,6 +5,7 @@ using System.Linq;
 
 public class DiceDrawSystem : MonoBehaviour
 {
+    public static DiceDrawSystem Instance;
     [SerializeField] List<PlayableDie> dice;
 
     List<PlayableDie> drawBag;
@@ -13,14 +14,16 @@ public class DiceDrawSystem : MonoBehaviour
 
     readonly int drawAmount = 5;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
-        drawBag = new List<PlayableDie>(dice);
-        playPile = new List<PlayableDie>(5);
-        discardBag = new List<PlayableDie>(dice.Count);
+        if(Instance == null)
+        {
+            Instance = this;
+        } else
+        {
+            return;
+        }
     }
-
     //private void Update()
     //{
     //    if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -40,6 +43,13 @@ public class DiceDrawSystem : MonoBehaviour
     //        Reshuffle();
     //    }
     //}
+    public void Init(List<PlayableDie> diceList)
+    {
+        dice = new List<PlayableDie>(diceList);
+        drawBag = new List<PlayableDie>(dice);
+        playPile = new List<PlayableDie>(5);
+        discardBag = new List<PlayableDie>(dice.Count);
+    }
 
     public void ShuffleDrawPile()
     {
