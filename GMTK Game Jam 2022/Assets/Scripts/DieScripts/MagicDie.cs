@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicDie : MonoBehaviour
+public class MagicDie : PlayableDie
 {
-    public DiceSO attackDieSO;
     //private Player player
     void Start()
     {
         //player = FindObjectWithType<Player>();
     }
 
+    public override void Roll()
+    {
+        throw new System.NotImplementedException();
+    }
 }
