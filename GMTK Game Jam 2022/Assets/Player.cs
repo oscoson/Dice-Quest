@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    
     public int maxHP;
     public List<PlayableDie> diceInventory;
 
