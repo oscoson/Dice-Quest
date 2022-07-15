@@ -14,7 +14,6 @@ public class GameBoardPiece : MonoBehaviour, IBoardEntity
     {
         boardPosition = board.WorldToCell(transform.position);
         transform.position = board.CellToWorld(boardPosition);
-        Debug.Log(boardPosition);
     }
 
     // Update is called once per frame
