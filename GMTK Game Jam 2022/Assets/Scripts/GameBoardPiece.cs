@@ -7,32 +7,21 @@ public class GameBoardPiece : MonoBehaviour, IBoardEntity
     [SerializeField] GameBoard board;
     [SerializeField] EntityType entityType;
     bool isMoving = false;
-    Vector2Int boardPosition;
+    private Vector2Int boardPosition;
+    public Vector2Int BoardPosition { get => boardPosition; }
 
     // Start is called before the first frame update
     void Start()
     {
         boardPosition = board.WorldToCell(transform.position);
         transform.position = board.CellToWorld(boardPosition);
+        board.AddBoardEntity(boardPosition, this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.RightArrow))
-        //{
-        //    MoveRight();
-        //} else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        //{
-        //    MoveLeft();
-        //} else if (Input.GetKeyDown(KeyCode.UpArrow))
-        //{
-        //    MoveUp();
-        //}
-        //else if (Input.GetKeyDown(KeyCode.DownArrow))
-        //{
-        //    MoveDown();
-        //}
+        
     }
 
     public EntityType GetEntityType()
