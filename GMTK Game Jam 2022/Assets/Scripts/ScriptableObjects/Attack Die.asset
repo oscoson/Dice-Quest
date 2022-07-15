@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b81621b584177384b9dc282d427184b8, type: 3}
-  m_Name: Magic Die
+  m_Name: Attack Die
   m_EditorClassIdentifier: 
-  minDiceVal: 4
-  maxDiceVal: 9
+  minDiceVal: 1
+  maxDiceVal: 6
+  diceSprite: {fileID: -1034042987, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}

@@ -8,4 +8,6 @@ public class DiceSO : ScriptableObject
 {
     public float minDiceVal;
     public float maxDiceVal;
+    public Sprite diceSprite;
+    //Type?
 }
