@@ -16,7 +16,6 @@ public class ShakeUI : MonoBehaviour
 
         while(elapsed < duration)
         {
-            Debug.Log("Shaking");
             float x = Random.Range(-1f, 1f) * magnitude;
             float y = Random.Range(-1f, 1f) * magnitude;
 
