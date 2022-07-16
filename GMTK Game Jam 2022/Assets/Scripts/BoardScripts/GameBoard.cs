@@ -21,6 +21,7 @@ public class GameBoard : MonoBehaviour
             {
                 GameObject tileObj = Instantiate(boardTile, CellToWorld((Vector2Int) bound), Quaternion.identity);
                 tileObj.GetComponent<SpriteRenderer>().sprite = tilemap.GetSprite(bound);
+                tileObj.transform.rotation = tilemap.GetTransformMatrix(bound).rotation;
                 boardMap[(Vector2Int)bound] = tileObj.GetComponent<GameBoardTile>();
             }
         }
