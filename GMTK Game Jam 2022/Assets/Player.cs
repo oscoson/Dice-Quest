@@ -7,23 +7,28 @@ public class Player : MonoBehaviour
     
     public int maxHP;
     public int currentHP;
-    public int energyLevel = 1;
-    public int maxEnergyLevel = 1;
+    public int energyLevel = 3;
+    public int maxEnergyLevel = 3;
 
     public List<PlayableDie> diceInventory;
+    private ShakeUI shaker;
 
     private void Awake()
     {
+        shaker = FindObjectOfType<ShakeUI>();
         for (int i = 0; i < diceInventory.Count; i++)
         {
             GameObject go = Instantiate(diceInventory[i].gameObject, transform);
             diceInventory[i] = go.GetComponent<PlayableDie>();
         }
+
     }
 
     public void InflictDamage(int dmg)
     {
         currentHP -= dmg;
+        CombatManager.Instance.playAudio.Play("DamagePlayer");
+        StartCoroutine(shaker.Shake(0.15f, 4f));
         if (currentHP <= 0) Die();
     }
 

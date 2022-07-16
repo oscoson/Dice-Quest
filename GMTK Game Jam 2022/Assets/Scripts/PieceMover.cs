@@ -62,6 +62,7 @@ public class PieceMover : MonoBehaviour
                 {
                     piece.MoveDown();
                 }
+                board.Reveal(piece.BoardPosition);
             }
             else
             {
@@ -82,18 +83,22 @@ public class PieceMover : MonoBehaviour
 
     public void StartCombat(int index)
     {
+
         inCombat = true;
         CombatManager.Instance.StartCombat(index);
     }
 
     public void ReturnToOverworld()
     {
+
         inCombat = false;
         board.DestroyBoardEntity(nextPosition);
     }
 
     public void ExitLevel()
     {
+        CombatManager.Instance.OnCombatEnd -= ReturnToOverworld;
+
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
         buildIndex++;
         buildIndex %= SceneManager.sceneCountInBuildSettings;

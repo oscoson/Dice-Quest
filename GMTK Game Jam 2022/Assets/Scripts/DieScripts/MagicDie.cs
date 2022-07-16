@@ -12,6 +12,7 @@ public class MagicDie : PlayableDie
 
     public override void Roll()
     {
+        CombatManager.Instance.playAudio.Play("Magic");
         enemy.InflictDamage(Random.Range(MinDiceVal, MaxDiceVal + 1));
     }
 }

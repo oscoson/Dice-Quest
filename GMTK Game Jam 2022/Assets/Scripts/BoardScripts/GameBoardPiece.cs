@@ -18,6 +18,7 @@ public class GameBoardPiece : MonoBehaviour, IBoardEntity
         boardPosition = board.WorldToCell(transform.position);
         transform.position = board.CellToWorld(boardPosition);
         board.AddBoardEntity(boardPosition, this);
+        if(entityType == EntityType.Player)board.Reveal(boardPosition);
     }
 
     // Update is called once per frame
