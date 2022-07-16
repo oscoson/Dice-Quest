@@ -14,6 +14,7 @@ public class RecoveryDie : PlayableDie
 
     public override void Roll()
     {
-        throw new System.NotImplementedException();
+        Debug.Assert(hasInit);
+        player.Heal(Random.Range(diceData.minDiceVal, diceData.maxDiceVal + 1));
     }
 }
