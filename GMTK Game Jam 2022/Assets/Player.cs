@@ -12,6 +12,15 @@ public class Player : MonoBehaviour
 
     public List<PlayableDie> diceInventory;
 
+    private void Awake()
+    {
+        for (int i = 0; i < diceInventory.Count; i++)
+        {
+            GameObject go = Instantiate(diceInventory[i].gameObject, transform);
+            diceInventory[i] = go.GetComponent<PlayableDie>();
+        }
+    }
+
     public void InflictDamage(int dmg)
     {
         currentHP -= dmg;

@@ -114,6 +114,7 @@ public class CombatManager : MonoBehaviour
 
     public void EndCombat()
     {
+        player.diceInventory.ForEach(d => d.Upgrade());
         battleCanvas.SetActive(false);
         OnCombatEnd?.Invoke();
     }
@@ -139,7 +140,7 @@ public class CombatManager : MonoBehaviour
             Debug.Log(i);
             if (DiceDrawSystem.Instance.playPile[i] != null)
             {
-                diceSlots[i].GetComponent<Image>().sprite = DiceDrawSystem.Instance.playPile[i].diceData.diceSprite;
+                diceSlots[i].GetComponent<Image>().sprite = DiceDrawSystem.Instance.playPile[i].DiceSprite;
             }
             else
             {
@@ -148,13 +149,13 @@ public class CombatManager : MonoBehaviour
         }
         for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
         {
-            if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].diceData.diceType == "Damage")
-                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].diceData.minDiceVal.ToString() + "-" 
-                + DiceDrawSystem.Instance.playPile[i].diceData.maxDiceVal.ToString() + " DMG";
-            else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].diceData.diceType == "Health")
+            if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Damage")
+                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
+                + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() + " DMG";
+            else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Health")
             {
-                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].diceData.minDiceVal.ToString() + "-" 
-                + DiceDrawSystem.Instance.playPile[i].diceData.maxDiceVal.ToString() + " HP";
+                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
+                + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() + " HP";
             }
             else
                 diceValues[i].text = "";
