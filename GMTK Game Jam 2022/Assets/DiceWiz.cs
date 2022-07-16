@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class DiceWiz : Enemy
 {
-    private void Start()
-    {
-        currentHp = maxHp;
-    }
+
 }

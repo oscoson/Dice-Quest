@@ -2278,7 +2278,7 @@ MonoBehaviour:
   battleCanvas: {fileID: 1937672170}
   player: {fileID: 1222751146}
   enemies:
-  - {fileID: 0}
+  - {fileID: 4986268860745960866, guid: a79e6fa2573ca5d45b0c3d3146f553ab, type: 3}
   diceSlots:
   - {fileID: 205167237}
   - {fileID: 726655756}
@@ -3188,7 +3188,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1814189841}
         m_TargetAssemblyTypeName: DiceSlot, Assembly-CSharp
-        m_MethodName: Click
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
