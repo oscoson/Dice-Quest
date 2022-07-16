@@ -22,8 +22,9 @@ public class CombatManager : MonoBehaviour
     [SerializeField] float playerWaitTime = 1.5f;
     //[SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
+    public Animator enemyAnimation;
     private Enemy enemy;
-    private Animator enemyAnimation;
+    [SerializeField] private Image enemyImage;
     [SerializeField] private int currentEnemyIndex;
     [Header("Lists")]
     [SerializeField] List<GameObject> enemies;
@@ -35,7 +36,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
     [SerializeField] EnemyHealthBar enemyHealthBar;
-    [SerializeField] Image enemyImage;
 
     public System.Action OnCombatEnd;
 

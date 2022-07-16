@@ -30,7 +30,9 @@ public abstract class Enemy : MonoBehaviour
     public void InflictDamage(int dmg)
     {
         currentHp -= dmg;
+        CombatManager.Instance.enemyAnimation.SetBool("isHit", true);
         CombatManager.Instance.UpdateCombatReportText("You dealed " + dmg + " damage!");
+        StartCoroutine(hitAnimCancel(0.5f));
         //EnemyHealthBar.Instance.currentHealth = currentHp;
         if (currentHp <= 0) Die();
     }
@@ -41,6 +43,12 @@ public abstract class Enemy : MonoBehaviour
         CombatManager.Instance.UpdateCombatReportText("Good job!");
         CombatManager.Instance.EndCombat();
         Destroy(gameObject);
+    }
+
+    private IEnumerator hitAnimCancel(float animTime)
+    {
+        yield return new WaitForSecondsRealtime(animTime);
+        CombatManager.Instance.enemyAnimation.SetBool("isHit", false);
     }
 
     public abstract void PerformAction();
