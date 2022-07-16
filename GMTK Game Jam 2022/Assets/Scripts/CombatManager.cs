@@ -10,7 +10,7 @@ public class CombatManager : MonoBehaviour
     public GameObject battleCanvas;
     [SerializeField] Player player;
     [SerializeField] List<Enemy> enemies;
-    [SerializeField] List<Image> diceSlots;
+    [SerializeField] List<GameObject> diceSlots;
     public TextMeshProUGUI combatReport;
     private Image diceSlotsImage;
 
@@ -32,12 +32,26 @@ public class CombatManager : MonoBehaviour
     private void Start()
     {
         DiceDrawSystem.Instance.OnDrawDie += UpdateDieScreen;
+        for (int i = 0; i < diceSlots.Count; i++)
+        {
+            Debug.Log(diceSlots[i]);
+            diceSlots[i].GetComponent<DiceSlot>().OnDiePlay += PlayDie;
+        }
+    }
+
+    void PlayDie(int id)
+    {
+        if(id < DiceDrawSystem.Instance.playPile.Count)
+        {
+            DiceDrawSystem.Instance.PlayDie(id);
+        }
     }
 
     void UpdateDieScreen(PlayableDie die)
     {
 
     }
+
     public void StartCombat(int index)
     {
         battleCanvas.SetActive(true);
@@ -48,9 +62,10 @@ public class CombatManager : MonoBehaviour
     public void DrawDice()
     {
         DiceDrawSystem.Instance.DrawDice();
-        for (int i = 0; i < 5; i = i + 1) 
+        Debug.Log(DiceDrawSystem.Instance.playPile.Count);
+        for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1) 
         {
-            diceSlots[i].sprite = DiceDrawSystem.Instance.playPile[i].diceData.diceSprite;
+            diceSlots[i].GetComponent<Image>().sprite = DiceDrawSystem.Instance.playPile[i].diceData.diceSprite;
         }
     }
 
