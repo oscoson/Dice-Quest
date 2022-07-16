@@ -9,6 +9,7 @@ public class PieceMover : MonoBehaviour
     [SerializeField] GameBoard board;
     // Start is called before the first frame update
 
+    Vector2Int nextPosition;
     bool inCombat = false;
     void Start()
     {
@@ -42,7 +43,7 @@ public class PieceMover : MonoBehaviour
     public void MoveDir(Vector2Int direction)
     {
         Debug.Assert(Mathf.Abs(direction.x) + Mathf.Abs(direction.y) == 1);
-        Vector2Int nextPosition = piece.BoardPosition + direction;
+        nextPosition = piece.BoardPosition + direction;
         if (board.HasTile(nextPosition))
         {
             IBoardEntity entity = board.GetEntity(nextPosition);
@@ -88,6 +89,7 @@ public class PieceMover : MonoBehaviour
     public void ReturnToOverworld()
     {
         inCombat = false;
+        board.DestroyBoardEntity(nextPosition);
     }
 
     public void ExitLevel()

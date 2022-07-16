@@ -12,6 +12,6 @@ public class AttackDie : PlayableDie
     }
     public override void Roll()
     {
-        enemy.InflictDamage(Random.Range(diceData.minDiceVal, diceData.maxDiceVal + 1));
+        enemy.InflictDamage(Random.Range(MinDiceVal, MaxDiceVal + 1));
     }
 }

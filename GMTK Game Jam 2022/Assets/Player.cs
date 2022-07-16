@@ -12,6 +12,15 @@ public class Player : MonoBehaviour
 
     public List<PlayableDie> diceInventory;
 
+    private void Awake()
+    {
+        for (int i = 0; i < diceInventory.Count; i++)
+        {
+            GameObject go = Instantiate(diceInventory[i].gameObject, transform);
+            diceInventory[i] = go.GetComponent<PlayableDie>();
+        }
+    }
+
     public void InflictDamage(int dmg)
     {
         currentHP -= dmg;
@@ -33,6 +42,10 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                 Application.Quit();
+        #endif
     }
 }
