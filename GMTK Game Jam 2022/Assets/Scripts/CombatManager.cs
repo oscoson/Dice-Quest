@@ -7,13 +7,19 @@ using TMPro;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
+    [Header("Canvas & Other Objects")]
     public GameObject battleCanvas;
+    [SerializeField] Sprite emptySquare;
     [SerializeField] Player player;
+    [Header("Lists")]
     [SerializeField] List<GameObject> enemies;
     [SerializeField] List<GameObject> diceSlots;
+    [SerializeField] List<TextMeshProUGUI> diceValues;
+    [Header("Text Elements")]
     public TextMeshProUGUI combatReport;
+    [SerializeField] TextMeshProUGUI availableDiceNum;
+    [SerializeField] TextMeshProUGUI graveyardDiceNum;
     private Image diceSlotsImage;
-    [SerializeField] Sprite emptySquare;
 
     public System.Action OnCombatEnd;
 
@@ -42,7 +48,7 @@ public class CombatManager : MonoBehaviour
 
     void PlayDie(int id)
     {
-        if(id < DiceDrawSystem.Instance.playPile.Count)
+        if (id < DiceDrawSystem.Instance.playPile.Count)
         {
             if (DiceDrawSystem.Instance.playPile[id] == null) return;
             DiceDrawSystem.Instance.PlayDie(id);
@@ -57,6 +63,15 @@ public class CombatManager : MonoBehaviour
         DiceDrawSystem.Instance.Init(player.diceInventory, player, Instantiate(enemies[index]).GetComponent<Enemy>());
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DrawDice();
+    }
+
+    public void EndCombat()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            battleCanvas.SetActive(false);
+            OnCombatEnd?.Invoke();
+        }
     }
 
     public void DrawDice()
@@ -79,12 +94,28 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        EndCombat();
+        for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
         {
-            battleCanvas.SetActive(false);
-            OnCombatEnd?.Invoke();
+            if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].diceData.diceType == "Damage")
+                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].diceData.minDiceVal.ToString() + "-" 
+                + DiceDrawSystem.Instance.playPile[i].diceData.maxDiceVal.ToString() + " DMG";
+            else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].diceData.diceType == "Health")
+            {
+                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].diceData.minDiceVal.ToString() + "-" 
+                + DiceDrawSystem.Instance.playPile[i].diceData.maxDiceVal.ToString() + " HP";
+            }
+            else
+                diceValues[i].text = "";
         }
     }
+
+    private void FixedUpdate()
+    {
+        availableDiceNum.text = DiceDrawSystem.Instance.drawBag.Count.ToString();
+        graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
+    }
+
 
 
 

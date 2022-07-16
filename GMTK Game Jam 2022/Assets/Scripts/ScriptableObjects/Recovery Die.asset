@@ -15,3 +15,4 @@ MonoBehaviour:
   minDiceVal: 1
   maxDiceVal: 6
   diceSprite: {fileID: -367000974, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}
+  diceType: Health
