@@ -8,9 +8,9 @@ public class DiceDrawSystem : MonoBehaviour
     public static DiceDrawSystem Instance;
     List<PlayableDie> dice;
 
-    public List<PlayableDie> drawBag;
+    List<PlayableDie> drawBag;
     public List<PlayableDie> playPile;
-    public List<PlayableDie> discardBag;
+    List<PlayableDie> discardBag;
 
     readonly int drawAmount = 5;
 
