@@ -11,9 +11,11 @@ public class Player : MonoBehaviour
     public int maxEnergyLevel = 1;
 
     public List<PlayableDie> diceInventory;
+    private ShakeUI shaker;
 
     private void Awake()
     {
+        shaker = FindObjectOfType<ShakeUI>();
         for (int i = 0; i < diceInventory.Count; i++)
         {
             GameObject go = Instantiate(diceInventory[i].gameObject, transform);
@@ -24,6 +26,7 @@ public class Player : MonoBehaviour
     public void InflictDamage(int dmg)
     {
         currentHP -= dmg;
+        StartCoroutine(shaker.Shake(0.15f, 2f));
         if (currentHP <= 0) Die();
     }
 
