@@ -12,6 +12,8 @@ public class DiceDrawSystem : MonoBehaviour
     public List<PlayableDie> playPile;
     List<PlayableDie> discardBag;
 
+    public System.Action<PlayableDie> OnDrawDie;
+
     readonly int drawAmount = 5;
 
     private void Awake()
@@ -77,6 +79,7 @@ public class DiceDrawSystem : MonoBehaviour
         Debug.Assert(drawBag.Count > 0, "DRAWBAG COUNT NEEDS TO BE GREATER THAN ZERO!!!!@#!@#)!@#@!#!");
         int index = Random.Range(0, drawBag.Count);
         playPile.Add(drawBag[index]);
+        OnDrawDie?.Invoke(drawBag[index]);
         drawBag.RemoveAt(index);
     }
 

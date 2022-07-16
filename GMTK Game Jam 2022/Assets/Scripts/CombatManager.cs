@@ -8,11 +8,14 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
     public GameObject battleCanvas;
-    private Player player;
+    [SerializeField] Player player;
     [SerializeField] List<Enemy> enemies;
     [SerializeField] List<Transform> diceSlots;
     public TextMeshProUGUI combatReport;
     private Image diceSlotsImage;
+
+
+
 
     private void Awake()
     {
@@ -28,7 +31,12 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        DiceDrawSystem.Instance.OnDrawDie += UpdateDieScreen;
+    }
+
+    void UpdateDieScreen(PlayableDie die)
+    {
+
     }
     public void StartCombat(int index)
     {
@@ -47,4 +55,10 @@ public class CombatManager : MonoBehaviour
     {
 
     }
+
+
+
+
+
+
 }

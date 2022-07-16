@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class PlayableDie : MonoBehaviour
 {
-    [SerializeField] protected DiceSO diceData;
+    public DiceSO diceData;
 
     protected Player player;
     protected Enemy enemy;
