@@ -10,9 +10,14 @@ public class CombatManager : MonoBehaviour
     [Header("Canvas & Other Objects")]
     public GameObject battleCanvas;
     [SerializeField] Sprite emptySquare;
+    [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
+    [SerializeField] float playerWaitTime = 1f;
+    [SerializeField] float enemyWaitTime = 2f;
     [Header("Player")]
     [SerializeField] Player player;
     [SerializeField] bool playerTurn = true;
+    [Header("Enemy")]
+    [SerializeField] private int currentEnemyIndex;
     [Header("Lists")]
     [SerializeField] List<GameObject> enemies;
     [SerializeField] List<GameObject> diceSlots;
@@ -55,6 +60,7 @@ public class CombatManager : MonoBehaviour
         {
             if (DiceDrawSystem.Instance.playPile[id] == null) return;
             DiceDrawSystem.Instance.PlayDie(id);
+            DiceDrawSystem.Instance.idTracker(id);
             player.energyLevel--;
             UpdateDiceDisplay();
         }
@@ -65,10 +71,18 @@ public class CombatManager : MonoBehaviour
     {
         playerTurn = true;
         player = FindObjectOfType<Player>();
+        currentEnemyIndex = index;
         battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory, player, Instantiate(enemies[index]).GetComponent<Enemy>());
         DiceDrawSystem.Instance.ShuffleDrawPile();
-        BeginTurn();
+        DiceDrawSystem.Instance.firstTurn = true;
+        // Since we're taking into account unique enemy situations + moves -> several conditionals for what kind of enemy you will be facing
+        if(currentEnemyIndex == 0)
+        {
+            combatReport.text = "Dicewiz blocks your way!";
+
+        }
+        StartCoroutine(playerWaitingTime(playerWaitTime));
     }
 
     public void BeginTurn()
@@ -77,8 +91,20 @@ public class CombatManager : MonoBehaviour
     }
     public void EndTurn()
     {
-        
+        EnemyTurn();
     }
+
+    public void EnemyTurn()
+    {
+        if(currentEnemyIndex == 0)
+        {
+            int damage = Random.Range(5, 20);
+            player.InflictDamage(damage);
+            combatReport.text = "Dicewiz attacks and damages you for " + damage.ToString() + " HP";
+            StartCoroutine(enemyWaitingTime(enemyWaitTime));
+        }
+    }
+    
 
     public void EndCombat()
     {
@@ -86,9 +112,24 @@ public class CombatManager : MonoBehaviour
         OnCombatEnd?.Invoke();
     }
 
+    IEnumerator playerWaitingTime(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        BeginTurn();
+
+    }
+
+    // This is pretty much useless lol get rid of it - Oscar (the guy who made it himself)
+    IEnumerator enemyWaitingTime(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        BeginTurn();
+    }
+
     public void DrawDice()
     {
         DiceDrawSystem.Instance.DrawDice();
+        player.energyLevel = player.maxEnergyLevel;
         UpdateDiceDisplay();
     }
 
@@ -96,19 +137,15 @@ public class CombatManager : MonoBehaviour
     {
         for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
         {
+            Debug.Log(i);
             if (DiceDrawSystem.Instance.playPile[i] != null)
+            {
                 diceSlots[i].GetComponent<Image>().sprite = DiceDrawSystem.Instance.playPile[i].diceData.diceSprite;
+            }
             else
+            {
                 diceSlots[i].GetComponent<Image>().sprite = emptySquare;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EndCombat();
+            }
         }
         for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
         {
@@ -125,11 +162,19 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EndCombat();
+        }
+    }
+
     private void FixedUpdate()
     {
         availableDiceNum.text = DiceDrawSystem.Instance.drawBag.Count.ToString();
         graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
-        Debug.Log(player);
         energyAmount.text = player.energyLevel.ToString() + "/" + player.maxEnergyLevel.ToString();
 
     }

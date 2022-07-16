@@ -16,7 +16,10 @@ public class PlayerHealthBar : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
-        secondaryHealthBar.fillAmount = currentHealth / maxHealth;
+        currentHealth = player.currentHP;
+        maxHealth = player.maxHP;
+        healthBar.fillAmount = currentHealth / maxHealth;
+        secondaryHealthBar.fillAmount = healthBar.fillAmount;
     }
 
     private void Update()

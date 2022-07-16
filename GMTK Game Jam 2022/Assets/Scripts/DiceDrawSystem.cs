@@ -11,16 +11,18 @@ public class DiceDrawSystem : MonoBehaviour
     public List<PlayableDie> drawBag;
     public List<PlayableDie> playPile;
     public List<PlayableDie> discardBag;
-
-    readonly int drawAmount = 5;
+    public bool firstTurn = false;
+    public int drawAmount;
+    [SerializeField] private List<int> emptyDiceSlots = new List<int>(5);
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        } else
+        }
+        else
         {
             Destroy(gameObject);
         }
@@ -73,32 +75,81 @@ public class DiceDrawSystem : MonoBehaviour
         ShuffleDrawPile();
     }
 
-    private void DrawDie()
+    private void DrawDie(int emptyDicePos)
     {
-        Debug.Assert(drawBag.Count > 0, "DRAWBAG COUNT NEEDS TO BE GREATER THAN ZERO!!!!@#!@#)!@#@!#!");
+        Debug.Log("Drawing Die!");
+        //Debug.Assert(drawBag.Count > 0, "DRAWBAG COUNT NEEDS TO BE GREATER THAN ZERO!!!!@#!@#)!@#@!#!");
+        int index = Random.Range(0, drawBag.Count);
+        //playPile.Add(drawBag[index]);
+        // Adds new Dice at the position of the selected dice from previous turn
+        playPile[emptyDiceSlots[emptyDicePos]] = drawBag[index];
+        emptyDiceSlots.RemoveAt(emptyDicePos);
+        drawBag.RemoveAt(index);
+    }
+
+    private void firstDraw()
+    {
         int index = Random.Range(0, drawBag.Count);
         playPile.Add(drawBag[index]);
         drawBag.RemoveAt(index);
     }
 
+    public void idTracker(int id)
+    {
+
+        //Tracks ids of selected dies
+        Debug.Log("ID Track: " + id);
+        emptyDiceSlots.Add(id);
+        Debug.Log("ids = " + emptyDiceSlots.Count());
+        drawAmount++;
+    }
+
+    public void emptyIDTracker()
+    {
+        emptyDiceSlots.RemoveAt(0);
+    }
     public void DrawDice()
     {
-        int drawLeft = drawAmount;
-        int drawBagSize = drawBag.Count;
-        if(drawLeft > drawBagSize)
+        if (firstTurn)
         {
-            drawLeft -= drawBagSize;
-            for(int i = 0; i < drawBagSize; i++)
+            if(emptyDiceSlots.Count == 1)
             {
-                DrawDie();
+                emptyIDTracker();
             }
+            drawAmount = 5;
+            firstTurn = false;
+            for (int i = 0; i < drawAmount; i++)
+            {
+                firstDraw();
+            }
+            drawAmount = 0;
+            return;
         }
-
-        Reshuffle();
-        drawBagSize = drawBag.Count;
-        for(int i = 0; i < Mathf.Min(drawLeft, drawBagSize); i++)
+        Debug.Log("Drawing Dice!");
+        int drawsNeeded = drawAmount;
+        int drawBagSize = drawBag.Count;
+        // If the amount of draws needed for empty dice exceeds the bag size, refill bag -> draw amount needed
+        if (drawsNeeded > drawBagSize)
         {
-            DrawDie();
+            Reshuffle();
+            Debug.Log("More Die!");
+            for (int i = 0; i < drawsNeeded; drawsNeeded--)
+            {
+                DrawDie(i);
+            }
+            drawAmount = 0;
+            return;
+        }
+        else
+        {
+            // else, draw the amount needed
+            for (int i = 0; i < drawsNeeded; drawsNeeded--)
+            {
+                Debug.Log("We have Enough!");
+                DrawDie(i);
+            }
+            drawAmount = 0;
+            return;
         }
     }
 

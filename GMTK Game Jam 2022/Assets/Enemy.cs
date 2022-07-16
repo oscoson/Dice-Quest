@@ -13,17 +13,21 @@ public abstract class Enemy : MonoBehaviour
     private void Start()
     {
         currentHp = maxHp;
+        //EnemyHealthBar.Instance.Init(currentHp, maxHp);
     }
 
     public void InflictDamage(int dmg)
     {
         currentHp -= dmg;
+        //EnemyHealthBar.Instance.currentHealth = currentHp;
         if (currentHp <= 0) Die();
     }
 
     public void Die()
     {
         Debug.Log("Die");
-        throw new System.NotImplementedException();
+        CombatManager.Instance.combatReport.text = "Good job!";
+        CombatManager.Instance.EndCombat();
+        Destroy(gameObject);
     }
 }
