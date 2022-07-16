@@ -74,7 +74,6 @@ public class PieceMover : MonoBehaviour
 
     public void StartCombat()
     {
-
         CombatManager.Instance.StartCombat();
     }
 

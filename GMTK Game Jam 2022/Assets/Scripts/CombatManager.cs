@@ -9,6 +9,7 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
     public GameObject battleCanvas;
     private Player player;
+    
     public TextMeshProUGUI combatReport;
 
     private void Awake()
@@ -31,6 +32,7 @@ public class CombatManager : MonoBehaviour
     {
         battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory);
+
         
     }
 
