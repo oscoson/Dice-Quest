@@ -15,13 +15,15 @@ public class CombatManager : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] Player player;
-    private Enemy enemy;
+    
     [SerializeField] bool playerTurn = true;
 
     [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
     [SerializeField] float playerWaitTime = 1.5f;
     //[SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
+    private Enemy enemy;
+    private Animator enemyAnimation;
     [SerializeField] private int currentEnemyIndex;
     [Header("Lists")]
     [SerializeField] List<GameObject> enemies;
@@ -77,18 +79,23 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(int index)
     {
+        //Player assign
         playerTurn = true;
         player = FindObjectOfType<Player>();
-        currentEnemyIndex = index;
+        //canvas set
         battleCanvas.SetActive(true);
+        //Enemy assign
+        currentEnemyIndex = index;
         GameObject enemyGo = Instantiate(enemies[index]);
         enemy = enemyGo.GetComponent<Enemy>();
         enemy.Init(player);
         enemyImage.sprite = enemy.sprite;
         enemyHealthBar.Init(enemy.CurrentHp, enemy.MaxHp);
+        //DiceDrawSystem Calls
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
+        //Play Audio
         playAudio.Play("Encounter");
         playAudio.Play("BattleTheme");
         UpdateCombatReportText($"{enemy.Name} blocks your way!");
