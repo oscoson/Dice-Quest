@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     {
         currentHP -= dmg;
         CombatManager.Instance.playAudio.Play("DamagePlayer");
-        StartCoroutine(shaker.Shake(0.15f, 2f));
+        StartCoroutine(shaker.Shake(0.15f, 4f));
         if (currentHP <= 0) Die();
     }
 

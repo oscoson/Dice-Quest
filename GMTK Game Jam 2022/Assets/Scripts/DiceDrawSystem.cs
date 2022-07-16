@@ -77,7 +77,6 @@ public class DiceDrawSystem : MonoBehaviour
 
     private void DrawDie(int emptyDicePos)
     {
-        Debug.Log("Drawing Die!");
         //Debug.Assert(drawBag.Count > 0, "DRAWBAG COUNT NEEDS TO BE GREATER THAN ZERO!!!!@#!@#)!@#@!#!");
         int index = Random.Range(0, drawBag.Count);
         //playPile.Add(drawBag[index]);
@@ -99,9 +98,7 @@ public class DiceDrawSystem : MonoBehaviour
     {
 
         //Tracks ids of selected dies
-        Debug.Log("ID Track: " + id);
         emptyDiceSlots.Add(id);
-        Debug.Log("ids = " + emptyDiceSlots.Count());
         //draw amount represent the amount of dies needed to draw -> future proof as upgrades progress
         drawAmount++;
     }
@@ -122,14 +119,13 @@ public class DiceDrawSystem : MonoBehaviour
             drawAmount = 0;
             return;
         }
-        Debug.Log("Drawing Dice!");
+
         int drawsNeeded = drawAmount;
         int drawBagSize = drawBag.Count;
         // If the amount of draws needed for empty dice slots exceeds the bag size, refill bag -> draw amount needed after
         if (drawsNeeded > drawBagSize)
         {
             Reshuffle();
-            Debug.Log("More Die!");
             for (int i = 0; i < drawsNeeded; drawsNeeded--)
             {
                 DrawDie(i);
@@ -142,7 +138,6 @@ public class DiceDrawSystem : MonoBehaviour
             // else, draw the amount needed
             for (int i = 0; i < drawsNeeded; drawsNeeded--)
             {
-                Debug.Log("We have Enough!");
                 DrawDie(i);
             }
             drawAmount = 0;

@@ -88,6 +88,7 @@ public class CombatManager : MonoBehaviour
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
         playAudio.Play("Encounter");
+        playAudio.Play("BattleTheme");
         UpdateCombatReportText($"{enemy.Name} blocks your way!");
         DrawDice();
     }
@@ -113,6 +114,7 @@ public class CombatManager : MonoBehaviour
     {
         player.diceInventory.ForEach(d => d.Upgrade());
         Destroy(enemy.gameObject);
+        playAudio.StopLoop("BattleTheme");
         battleCanvas.SetActive(false);
         OnCombatEnd?.Invoke();
     }
