@@ -48,3 +48,6 @@ TagManager:
   - name: Enemy
     uniqueID: 1633674801
     locked: 0
+  - name: HUD
+    uniqueID: 1047763325
+    locked: 0
