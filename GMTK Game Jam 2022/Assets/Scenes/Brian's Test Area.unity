@@ -1773,7 +1773,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 0
-  diceInventory: []
+  diceInventory:
+  - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
+  - {fileID: 1575602906690660984, guid: 72f7e435fd702eb49a4bc768b63b3b27, type: 3}
+  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
+  - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
+  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
+--- !u!1 &1253348887
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1253348888}
+  m_Layer: 0
+  m_Name: Available Die
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1253348888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253348887}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 780.80554, y: 542.3297, z: 5.480102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1298130865
 GameObject:
   m_ObjectHideFlags: 0
