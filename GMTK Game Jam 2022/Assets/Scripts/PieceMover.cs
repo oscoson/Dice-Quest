@@ -62,6 +62,7 @@ public class PieceMover : MonoBehaviour
                 {
                     piece.MoveDown();
                 }
+                board.Reveal(piece.BoardPosition);
             }
             else
             {
