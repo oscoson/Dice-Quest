@@ -9,7 +9,7 @@ public class DiceDrawSystem : MonoBehaviour
     [SerializeField] List<PlayableDie> dice;
 
     List<PlayableDie> drawBag;
-    List<PlayableDie> playPile;
+    public List<PlayableDie> playPile;
     List<PlayableDie> discardBag;
 
     readonly int drawAmount = 5;

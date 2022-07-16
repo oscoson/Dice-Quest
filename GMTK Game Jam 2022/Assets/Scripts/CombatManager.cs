@@ -10,7 +10,9 @@ public class CombatManager : MonoBehaviour
     public GameObject battleCanvas;
     private Player player;
     [SerializeField] List<Enemy> enemies;
+    [SerializeField] List<Transform> diceSlots;
     public TextMeshProUGUI combatReport;
+    private Image diceSlotsImage;
 
     private void Awake()
     {
@@ -32,6 +34,10 @@ public class CombatManager : MonoBehaviour
     {
         battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemies[index]);
+        for (int i = 0; i <= 5; i = i + 1) 
+        {
+            
+        }
 
         
     }
