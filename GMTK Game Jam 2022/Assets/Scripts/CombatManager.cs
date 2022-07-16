@@ -120,6 +120,7 @@ public class CombatManager : MonoBehaviour
         graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
         Debug.Log(player);
         energyAmount.text = player.energyLevel.ToString() + "/" + player.maxEnergyLevel.ToString();
+
     }
 
 
