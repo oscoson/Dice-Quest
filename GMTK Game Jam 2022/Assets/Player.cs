@@ -7,8 +7,8 @@ public class Player : MonoBehaviour
     
     public int maxHP;
     public int currentHP;
-    public int energyLevel = 1;
-    public int maxEnergyLevel = 1;
+    public int energyLevel = 3;
+    public int maxEnergyLevel = 3;
 
     public List<PlayableDie> diceInventory;
 
@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
             GameObject go = Instantiate(diceInventory[i].gameObject, transform);
             diceInventory[i] = go.GetComponent<PlayableDie>();
         }
+
     }
 
     public void InflictDamage(int dmg)
