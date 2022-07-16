@@ -43,9 +43,10 @@ public class DiceDrawSystem : MonoBehaviour
     //        Reshuffle();
     //    }
     //}
-    public void Init(List<PlayableDie> diceList)
+    public void Init(List<PlayableDie> diceList, Player player, Enemy enemy)
     {
         dice = new List<PlayableDie>(diceList);
+        dice.ForEach(d => d.Init(player, enemy));
         drawBag = new List<PlayableDie>(dice);
         playPile = new List<PlayableDie>(5);
         discardBag = new List<PlayableDie>(dice.Count);
