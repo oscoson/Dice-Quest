@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected int maxHp;
     [HideInInspector] protected int currentHp;
+    public Sprite sprite;
 
     protected Player player;
     public int MaxHp { get => maxHp; }
