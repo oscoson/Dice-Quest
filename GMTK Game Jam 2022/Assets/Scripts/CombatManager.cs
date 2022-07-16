@@ -86,14 +86,14 @@ public class CombatManager : MonoBehaviour
         // Since we're taking into account unique enemy situations + moves -> several conditionals for what kind of enemy you will be facing
         if(currentEnemyIndex == 0)
         {
-            combatReport.text = "Dicewiz blocks your way!";
+            UpdateCombatReportText("Dicewiz blocks your way!");
             DrawDice();
         }
     }
 
     public void BeginTurn()
     {
-        combatReport.text = "What will you do?";
+        UpdateCombatReportText("What will you do?");
         DrawDice();
     }
     public void EndTurn()
@@ -107,11 +107,10 @@ public class CombatManager : MonoBehaviour
         {
             int damage = Random.Range(4, 10);
             player.InflictDamage(damage);
-            combatReport.text = "Dicewiz attacks and damages you for " + damage.ToString() + " HP";
+            UpdateCombatReportText("Dicewiz attacks and damages you for " + damage.ToString() + " HP");
             StartCoroutine(playerWaitingTime(playerWaitTime));
         }
     }
-    
 
     public void EndCombat()
     {
@@ -160,6 +159,11 @@ public class CombatManager : MonoBehaviour
             else
                 diceValues[i].text = "";
         }
+    }
+
+    public void UpdateCombatReportText(string report)
+    {
+        combatReport.text = report;
     }
 
     // Update is called once per frame

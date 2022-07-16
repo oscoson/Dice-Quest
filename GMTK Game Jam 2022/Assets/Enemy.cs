@@ -19,7 +19,7 @@ public abstract class Enemy : MonoBehaviour
     public void InflictDamage(int dmg)
     {
         currentHp -= dmg;
-        CombatManager.Instance.combatReport.text = "You dealed " + dmg + " damage!";
+        CombatManager.Instance.UpdateCombatReportText("You dealed " + dmg + " damage!");
         //EnemyHealthBar.Instance.currentHealth = currentHp;
         if (currentHp <= 0) Die();
     }
@@ -27,7 +27,7 @@ public abstract class Enemy : MonoBehaviour
     public void Die()
     {
         Debug.Log("Die");
-        CombatManager.Instance.combatReport.text = "Good job!";
+        CombatManager.Instance.UpdateCombatReportText("Good job!");
         CombatManager.Instance.EndCombat();
         Destroy(gameObject);
     }
