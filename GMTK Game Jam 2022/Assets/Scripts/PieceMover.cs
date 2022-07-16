@@ -62,7 +62,9 @@ public class PieceMover : MonoBehaviour
                 switch (entity.GetEntityType())
                 {
                     case EntityType.Enemy:
-                        StartCombat();
+                        GameBoardPiece enemy = entity as GameBoardPiece;
+
+                        StartCombat(enemy.EnemyID);
                         break;
                     case EntityType.Exit:
                         ExitLevel();
@@ -72,10 +74,10 @@ public class PieceMover : MonoBehaviour
         }
     }
 
-    public void StartCombat()
+    public void StartCombat(int index)
     {
 
-        CombatManager.Instance.StartCombat();
+        CombatManager.Instance.StartCombat(index);
     }
 
     public void ExitLevel()

@@ -9,6 +9,7 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
     public GameObject battleCanvas;
     private Player player;
+    [SerializeField] List<Enemy> enemies;
     public TextMeshProUGUI combatReport;
 
     private void Awake()
@@ -27,10 +28,10 @@ public class CombatManager : MonoBehaviour
     {
         player = FindObjectOfType<Player>();
     }
-    public void StartCombat()
+    public void StartCombat(int index)
     {
         battleCanvas.SetActive(true);
-        DiceDrawSystem.Instance.Init(player.diceInventory);
+        DiceDrawSystem.Instance.Init(player.diceInventory, player, enemies[index]);
         
     }
 
