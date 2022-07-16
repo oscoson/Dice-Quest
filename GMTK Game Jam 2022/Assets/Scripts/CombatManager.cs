@@ -10,7 +10,7 @@ public class CombatManager : MonoBehaviour
     public GameObject battleCanvas;
     [SerializeField] Player player;
     [SerializeField] List<Enemy> enemies;
-    [SerializeField] List<Transform> diceSlots;
+    [SerializeField] List<Image> diceSlots;
     public TextMeshProUGUI combatReport;
     private Image diceSlotsImage;
 
@@ -42,12 +42,16 @@ public class CombatManager : MonoBehaviour
     {
         battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemies[index]);
-        for (int i = 0; i <= 5; i = i + 1) 
-        {
-            
-        }
+        DrawDice();
+    }
 
-        
+    public void DrawDice()
+    {
+        DiceDrawSystem.Instance.DrawDice();
+        for (int i = 0; i < 5; i = i + 1) 
+        {
+            diceSlots[i].sprite = DiceDrawSystem.Instance.playPile[i].diceData.diceSprite;
+        }
     }
 
     // Update is called once per frame

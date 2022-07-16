@@ -6,7 +6,7 @@ using System.Linq;
 public class DiceDrawSystem : MonoBehaviour
 {
     public static DiceDrawSystem Instance;
-    [SerializeField] List<PlayableDie> dice;
+    List<PlayableDie> dice;
 
     List<PlayableDie> drawBag;
     public List<PlayableDie> playPile;

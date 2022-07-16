@@ -1561,7 +1561,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 0
-  diceInventory: []
+  diceInventory:
+  - {fileID: 1324281694}
+  - {fileID: 1324281694}
+  - {fileID: 1324281694}
+  - {fileID: 1324281694}
+  - {fileID: 1324281694}
+  - {fileID: 1324281694}
 --- !u!1 &1298130865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,6 +1764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleCanvas: {fileID: 1937672170}
+  player: {fileID: 1222751146}
   enemies:
   - {fileID: 0}
   diceSlots:
@@ -2649,15 +2656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4a29487fe88f84eac18f322dc9c08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dice:
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
-  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
   playPile: []
 --- !u!4 &1924564608
 Transform:
@@ -2692,7 +2690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1937672171
 MonoBehaviour:
   m_ObjectHideFlags: 0
