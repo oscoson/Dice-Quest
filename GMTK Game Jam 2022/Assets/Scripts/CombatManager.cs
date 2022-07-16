@@ -31,7 +31,7 @@ public class CombatManager : MonoBehaviour
             Instance = this;
         }
     }
-     
+
     private void Start()
     {
         DiceDrawSystem.Instance.OnDrawDie += UpdateDieScreen;
@@ -41,7 +41,6 @@ public class CombatManager : MonoBehaviour
     {
 
     }
-
     public void StartCombat(int index)
     {
         playerTurn = true;
