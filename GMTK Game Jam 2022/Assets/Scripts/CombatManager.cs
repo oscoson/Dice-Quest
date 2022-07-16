@@ -8,26 +8,18 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
     public GameObject battleCanvas;
-<<<<<<< HEAD
     [SerializeField] Sprite emptySquare;
     [Header("Player")]
     [SerializeField] Player player;
     [SerializeField] bool playerTurn = true;
     [Header("Lists")]
-=======
-    [SerializeField] Player player;
->>>>>>> parent of 3a59046 (Merge branch 'main' of https://github.com/oscoson/GMTK-Game-Jam-2022)
     [SerializeField] List<GameObject> enemies;
     [SerializeField] List<GameObject> diceSlots;
     public TextMeshProUGUI combatReport;
-<<<<<<< HEAD
     [SerializeField] TextMeshProUGUI availableDiceNum;
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
-=======
->>>>>>> parent of 3a59046 (Merge branch 'main' of https://github.com/oscoson/GMTK-Game-Jam-2022)
     private Image diceSlotsImage;
-    [SerializeField] Sprite emptySquare;
 
     public System.Action OnCombatEnd;
 
@@ -56,11 +48,7 @@ public class CombatManager : MonoBehaviour
 
     void PlayDie(int id)
     {
-<<<<<<< HEAD
         if (id < DiceDrawSystem.Instance.playPile.Count && player.energyLevel > 0)
-=======
-        if(id < DiceDrawSystem.Instance.playPile.Count)
->>>>>>> parent of 3a59046 (Merge branch 'main' of https://github.com/oscoson/GMTK-Game-Jam-2022)
         {
             if (DiceDrawSystem.Instance.playPile[id] == null) return;
             DiceDrawSystem.Instance.PlayDie(id);
@@ -89,15 +77,12 @@ public class CombatManager : MonoBehaviour
         
     }
 
-<<<<<<< HEAD
     public void EndCombat()
     {
         battleCanvas.SetActive(false);
         OnCombatEnd?.Invoke();
     }
 
-=======
->>>>>>> parent of 3a59046 (Merge branch 'main' of https://github.com/oscoson/GMTK-Game-Jam-2022)
     public void DrawDice()
     {
         DiceDrawSystem.Instance.DrawDice();
@@ -119,32 +104,25 @@ public class CombatManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-<<<<<<< HEAD
         {
             EndCombat();
         }
         for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
-=======
->>>>>>> parent of 3a59046 (Merge branch 'main' of https://github.com/oscoson/GMTK-Game-Jam-2022)
         {
             battleCanvas.SetActive(false);
             OnCombatEnd?.Invoke();
         }
     }
 
-<<<<<<< HEAD
     private void FixedUpdate()
     {
         availableDiceNum.text = DiceDrawSystem.Instance.drawBag.Count.ToString();
         graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
         Debug.Log(player);
         energyAmount.text = player.energyLevel.ToString() + "/" + player.maxEnergyLevel.ToString();
-
     }
 
 
-=======
->>>>>>> parent of 3a59046 (Merge branch 'main' of https://github.com/oscoson/GMTK-Game-Jam-2022)
 
 
 
