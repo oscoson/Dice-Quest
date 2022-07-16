@@ -2962,7 +2962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleCanvas: {fileID: 1937672170}
   emptySquare: {fileID: 1958930996, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}
-  playerWaitTime: 1
+  playerWaitTime: 1.5
   enemyWaitTime: 2
   player: {fileID: 1331886707}
   playerTurn: 1

@@ -83,6 +83,7 @@ public class DiceDrawSystem : MonoBehaviour
         //playPile.Add(drawBag[index]);
         // Adds new Dice at the position of the selected dice from previous turn
         playPile[emptyDiceSlots[emptyDicePos]] = drawBag[index];
+        // Remove the position of the next new dice from emptyDiceSlots
         emptyDiceSlots.RemoveAt(emptyDicePos);
         drawBag.RemoveAt(index);
     }
@@ -101,20 +102,16 @@ public class DiceDrawSystem : MonoBehaviour
         Debug.Log("ID Track: " + id);
         emptyDiceSlots.Add(id);
         Debug.Log("ids = " + emptyDiceSlots.Count());
+        //draw amount represent the amount of dies needed to draw -> future proof as upgrades progress
         drawAmount++;
-    }
-
-    public void emptyIDTracker()
-    {
-        emptyDiceSlots.RemoveAt(0);
     }
     public void DrawDice()
     {
         if (firstTurn)
         {
-            if(emptyDiceSlots.Count == 1)
+            if(emptyDiceSlots.Count > 0)
             {
-                emptyIDTracker();
+                emptyDiceSlots.Clear();
             }
             drawAmount = 5;
             firstTurn = false;
@@ -128,7 +125,7 @@ public class DiceDrawSystem : MonoBehaviour
         Debug.Log("Drawing Dice!");
         int drawsNeeded = drawAmount;
         int drawBagSize = drawBag.Count;
-        // If the amount of draws needed for empty dice exceeds the bag size, refill bag -> draw amount needed
+        // If the amount of draws needed for empty dice slots exceeds the bag size, refill bag -> draw amount needed after
         if (drawsNeeded > drawBagSize)
         {
             Reshuffle();

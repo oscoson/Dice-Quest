@@ -11,11 +11,11 @@ public class CombatManager : MonoBehaviour
     public GameObject battleCanvas;
     [SerializeField] Sprite emptySquare;
     [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
-    [SerializeField] float playerWaitTime = 1f;
-    [SerializeField] float enemyWaitTime = 2f;
     [Header("Player")]
     [SerializeField] Player player;
     [SerializeField] bool playerTurn = true;
+    [SerializeField] float playerWaitTime = 1.5f;
+    [SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
     [SerializeField] private int currentEnemyIndex;
     [Header("Lists")]
@@ -80,13 +80,13 @@ public class CombatManager : MonoBehaviour
         if(currentEnemyIndex == 0)
         {
             combatReport.text = "Dicewiz blocks your way!";
-
+            DrawDice();
         }
-        StartCoroutine(playerWaitingTime(playerWaitTime));
     }
 
     public void BeginTurn()
     {
+        combatReport.text = "What will you do?";
         DrawDice();
     }
     public void EndTurn()
@@ -98,10 +98,10 @@ public class CombatManager : MonoBehaviour
     {
         if(currentEnemyIndex == 0)
         {
-            int damage = Random.Range(5, 20);
+            int damage = Random.Range(4, 10);
             player.InflictDamage(damage);
             combatReport.text = "Dicewiz attacks and damages you for " + damage.ToString() + " HP";
-            StartCoroutine(enemyWaitingTime(enemyWaitTime));
+            StartCoroutine(playerWaitingTime(playerWaitTime));
         }
     }
     
@@ -117,13 +117,6 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(waitTime);
         BeginTurn();
 
-    }
-
-    // This is pretty much useless lol get rid of it - Oscar (the guy who made it himself)
-    IEnumerator enemyWaitingTime(float waitTime)
-    {
-        yield return new WaitForSecondsRealtime(waitTime);
-        BeginTurn();
     }
 
     public void DrawDice()

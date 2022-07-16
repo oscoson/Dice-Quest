@@ -19,6 +19,7 @@ public abstract class Enemy : MonoBehaviour
     public void InflictDamage(int dmg)
     {
         currentHp -= dmg;
+        CombatManager.Instance.combatReport.text = "You dealed " + dmg + " damage!";
         //EnemyHealthBar.Instance.currentHealth = currentHp;
         if (currentHp <= 0) Die();
     }
