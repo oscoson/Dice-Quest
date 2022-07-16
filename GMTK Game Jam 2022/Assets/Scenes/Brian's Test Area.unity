@@ -3052,6 +3052,8 @@ MonoBehaviour:
   player: {fileID: 1331886707}
   playerTurn: 1
   playerWaitTime: 1.5
+  enemyAnimation: {fileID: 1612174648}
+  enemyImage: {fileID: 1612174646}
   currentEnemyIndex: 0
   enemies:
   - {fileID: 4986268860745960866, guid: a79e6fa2573ca5d45b0c3d3146f553ab, type: 3}
@@ -3076,7 +3078,6 @@ MonoBehaviour:
   graveyardDiceNum: {fileID: 1391277870}
   energyAmount: {fileID: 818432088}
   enemyHealthBar: {fileID: 635235859}
-  enemyImage: {fileID: 1612174646}
 --- !u!4 &1331886706
 Transform:
   m_ObjectHideFlags: 0
@@ -4275,18 +4276,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612174644}
   m_CullTransparentMesh: 1
---- !u!114 &1612174648
-MonoBehaviour:
+--- !u!95 &1612174648
+Animator:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1612174644}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4cccb5f6617d2a4f880945087bedc36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5363b7fc84ea8c746922a63f82a9b3de, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1624743030
 GameObject:
   m_ObjectHideFlags: 0
