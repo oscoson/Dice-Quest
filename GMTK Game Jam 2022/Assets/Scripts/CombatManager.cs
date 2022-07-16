@@ -15,41 +15,41 @@ public class CombatManager : MonoBehaviour
     private Image diceSlotsImage;
     [SerializeField] Sprite emptySquare;
 
+    public System.Action OnCombatEnd;
+
 
     private void Awake()
     {
         if (Instance != null)
         {
-            return;
+            Destroy(gameObject);
         }
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
     }
 
     private void Start()
     {
-        DiceDrawSystem.Instance.OnDrawDie += UpdateDieScreen;
         for (int i = 0; i < diceSlots.Count; i++)
         {
             diceSlots[i].GetComponent<DiceSlot>().OnDiePlay += PlayDie;
         }
     }
 
+
     void PlayDie(int id)
     {
         if(id < DiceDrawSystem.Instance.playPile.Count)
         {
+            if (DiceDrawSystem.Instance.playPile[id] == null) return;
             DiceDrawSystem.Instance.PlayDie(id);
             UpdateDiceDisplay();
         }
     }
 
-    void UpdateDieScreen(PlayableDie die)
-    {
-
-    }
 
     public void StartCombat(int index)
     {
@@ -79,7 +79,11 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            battleCanvas.SetActive(false);
+            OnCombatEnd?.Invoke();
+        }
     }
 
 
