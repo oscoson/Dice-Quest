@@ -54,9 +54,24 @@ public class GameBoard : MonoBehaviour
         return (Vector2)tilemap.CellToWorld((Vector3Int)cell) + (Vector2)tilemap.cellSize / 2;
     }
 
-    public void AddBoardEntity(Vector2Int pos, IBoardEntity entity)
+    public void AddBoardEntity(Vector2Int pos, GameBoardPiece entity)
     {
         boardMap[pos].AddEntity(entity);
+    }
+
+    public void Reveal(Vector2Int pos)
+    {
+        for (int row = -5; row <= 5; row++)
+        {
+            for (int col = -5; col <= 5; col++)
+            {
+                var offset = new Vector2Int(col, row);
+                if (!HasTile(pos + offset)) continue;
+                var tile = boardMap[pos + offset];
+                int manhatDist = Mathf.Abs(offset.x) + Mathf.Abs(offset.y);
+                tile.ChangeBrightness(Mathf.Clamp(1.2f - 0.2f * manhatDist, 0.0f, 1.0f));
+            }
+        }
     }
 
     public void RemoveBoardEntity(Vector2Int pos)
