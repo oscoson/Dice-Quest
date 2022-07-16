@@ -9,6 +9,7 @@ public class DiceSO : ScriptableObject
     public int minDiceVal;
     public int maxDiceVal;
     public Sprite diceSprite;
-    
+    public string diceType;
+
 
 }
