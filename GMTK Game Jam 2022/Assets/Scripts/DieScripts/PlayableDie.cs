@@ -42,7 +42,7 @@ public abstract class PlayableDie : MonoBehaviour
 
     public virtual void Upgrade()
     {
-        MaxDiceVal += Random.Range(1, 6);
-        MinDiceVal += Mathf.Min(Random.Range(1, 6), MaxDiceVal - MinDiceVal);
+        MaxDiceVal += Random.Range(0, 2);
+        MinDiceVal += Mathf.Min(Random.Range(0, 1), MaxDiceVal - MinDiceVal);
     }
 }

@@ -79,16 +79,15 @@ public class CombatManager : MonoBehaviour
         battleCanvas.SetActive(true);
         GameObject enemyGo = Instantiate(enemies[index]);
         enemy = enemyGo.GetComponent<Enemy>();
+        enemy.Init(player);
         enemyHealthBar.Init(enemy.CurrentHp, enemy.MaxHp);
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
         // Since we're taking into account unique enemy situations + moves -> several conditionals for what kind of enemy you will be facing
-        if(currentEnemyIndex == 0)
-        {
-            UpdateCombatReportText("Dicewiz blocks your way!");
-            DrawDice();
-        }
+
+        UpdateCombatReportText($"{enemy.Name} blocks your way!");
+        DrawDice();
     }
 
     public void BeginTurn()
@@ -96,6 +95,7 @@ public class CombatManager : MonoBehaviour
         UpdateCombatReportText("What will you do?");
         DrawDice();
     }
+
     public void EndTurn()
     {
         EnemyTurn();
@@ -103,18 +103,14 @@ public class CombatManager : MonoBehaviour
 
     public void EnemyTurn()
     {
-        if(currentEnemyIndex == 0)
-        {
-            int damage = Random.Range(4, 10);
-            player.InflictDamage(damage);
-            UpdateCombatReportText("Dicewiz attacks and damages you for " + damage.ToString() + " HP");
-            StartCoroutine(playerWaitingTime(playerWaitTime));
-        }
+        enemy.PerformAction();
+        StartCoroutine(playerWaitingTime(playerWaitTime));
     }
 
     public void EndCombat()
     {
         player.diceInventory.ForEach(d => d.Upgrade());
+        Destroy(enemy.gameObject);
         battleCanvas.SetActive(false);
         OnCombatEnd?.Invoke();
     }
