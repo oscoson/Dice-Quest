@@ -24,11 +24,12 @@ public class CombatManager : MonoBehaviour
             Instance = this;
         }
     }
-
+     
     private void Start()
     {
         player = FindObjectOfType<Player>();
     }
+
     public void StartCombat(int index)
     {
         battleCanvas.SetActive(true);
