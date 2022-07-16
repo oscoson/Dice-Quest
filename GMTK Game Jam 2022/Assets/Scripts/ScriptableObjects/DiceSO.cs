@@ -6,8 +6,8 @@ using Unity.UI;
 [CreateAssetMenu(fileName = "Dice", menuName = "New Dice")]
 public class DiceSO : ScriptableObject
 {
-    public float minDiceVal;
-    public float maxDiceVal;
+    public int minDiceVal;
+    public int maxDiceVal;
     public Sprite diceSprite;
     //Type?
 }
