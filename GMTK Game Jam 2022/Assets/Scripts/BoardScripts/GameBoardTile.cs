@@ -60,7 +60,6 @@ public class GameBoardTile : MonoBehaviour
 
     public void DestroyEntity()
     {
-        Debug.Log("destroy");
         Destroy(RemoveEntity().gameObject);
     }
 

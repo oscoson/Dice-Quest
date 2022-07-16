@@ -35,6 +35,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
     [SerializeField] EnemyHealthBar enemyHealthBar;
+    [SerializeField] Image enemyImage;
 
     public System.Action OnCombatEnd;
 
@@ -88,6 +89,7 @@ public class CombatManager : MonoBehaviour
         GameObject enemyGo = Instantiate(enemies[index]);
         enemy = enemyGo.GetComponent<Enemy>();
         enemy.Init(player);
+        enemyImage.sprite = enemy.sprite;
         enemyHealthBar.Init(enemy.CurrentHp, enemy.MaxHp);
         //DiceDrawSystem Calls
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);

@@ -38,7 +38,7 @@ public class GameBoard : MonoBehaviour
         return boardMap.ContainsKey(position);
     }
 
-    public IBoardEntity GetEntity(Vector2Int position)
+    public GameBoardPiece GetEntity(Vector2Int position)
     {
         return boardMap[position].Entity;
     }

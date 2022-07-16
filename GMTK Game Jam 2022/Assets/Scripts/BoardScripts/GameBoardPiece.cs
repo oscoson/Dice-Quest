@@ -8,8 +8,8 @@ public class GameBoardPiece : MonoBehaviour, IBoardEntity
     [SerializeField] EntityType entityType;
     bool isMoving = false;
     private Vector2Int boardPosition;
-    [SerializeField] int enemyID = 0;
-    public int EnemyID { get; }
+    [SerializeField] int enemyID;
+    public int EnemyID { get => enemyID; }
     public Vector2Int BoardPosition { get => boardPosition; }
 
     // Start is called before the first frame update

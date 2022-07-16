@@ -46,7 +46,7 @@ public class PieceMover : MonoBehaviour
         nextPosition = piece.BoardPosition + direction;
         if (board.HasTile(nextPosition))
         {
-            IBoardEntity entity = board.GetEntity(nextPosition);
+            GameBoardPiece entity = board.GetEntity(nextPosition);
             if (entity == null)
             {
                 if(direction == Vector2Int.left)
@@ -69,9 +69,8 @@ public class PieceMover : MonoBehaviour
                 switch (entity.GetEntityType())
                 {
                     case EntityType.Enemy:
-                        GameBoardPiece enemy = entity as GameBoardPiece;
-
-                        StartCombat(enemy.EnemyID);
+                        Debug.Log(entity.EnemyID);
+                        StartCombat(entity.EnemyID);
                         break;
                     case EntityType.Exit:
                         ExitLevel();
