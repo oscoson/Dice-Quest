@@ -835,8 +835,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasPos: {fileID: 752405702}
-  lightShakeDuration: 0
-  heavyShakeDuration: 0
 --- !u!1 &818432086
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,11 +3037,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleCanvas: {fileID: 1937672170}
+  playAudio: {fileID: 1833133431}
   emptySquare: {fileID: 1958930996, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}
   player: {fileID: 1331886707}
   playerTurn: 1
   playerWaitTime: 1.5
-  endWaitTime: 2
   currentEnemyIndex: 0
   enemies:
   - {fileID: 4986268860745960866, guid: a79e6fa2573ca5d45b0c3d3146f553ab, type: 3}
@@ -3075,7 +3073,8 @@ Transform:
   m_LocalPosition: {x: -3.9776692, y: -0.12340941, z: 0.00074091856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1833133432}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4762,6 +4761,93 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   text: {fileID: 860552936}
+--- !u!1 &1833133430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833133432}
+  - component: {fileID: 1833133431}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1833133431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833133430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0618e980d95b840903beacac23849b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Encounter
+    clip: {fileID: 8300000, guid: 929dc6cda3c2fe34694d2a1452adc5d0, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DamagePlayer
+    clip: {fileID: 8300000, guid: 24cbac1c18f97fd4cbad246dda4fda06, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Attack
+    clip: {fileID: 8300000, guid: 8f0760cf8d73bb24992b9a8eed4dbc5d, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 34cf5ccb9e4e9d2418de257f5ec8466c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Magic
+    clip: {fileID: 8300000, guid: 0d817f859df6fbd4093165e9bf8a2320, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ExtraTurn
+    clip: {fileID: 8300000, guid: d6bab9a897162d34ca9ec350fdd675ae, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Block
+    clip: {fileID: 8300000, guid: 64bf42f846bdacd4ba4c37fbd2f70900, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &1833133432
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833133430}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.9776692, y: 0.12340941, z: -0.00074091856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1331886706}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1924564606
 GameObject:
   m_ObjectHideFlags: 0

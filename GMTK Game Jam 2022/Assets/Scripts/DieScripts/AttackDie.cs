@@ -12,6 +12,7 @@ public class AttackDie : PlayableDie
     }
     public override void Roll()
     {
+        CombatManager.Instance.playAudio.Play("Attack");
         enemy.InflictDamage(Random.Range(MinDiceVal, MaxDiceVal + 1));
     }
 }

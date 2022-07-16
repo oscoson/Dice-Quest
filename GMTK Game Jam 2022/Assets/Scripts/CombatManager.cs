@@ -9,14 +9,18 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
     [Header("Canvas & Other Objects")]
     public GameObject battleCanvas;
+    public AudioManager playAudio;
     [SerializeField] Sprite emptySquare;
-    [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
+    
+
     [Header("Player")]
     [SerializeField] Player player;
     private Enemy enemy;
     [SerializeField] bool playerTurn = true;
+
+    [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
     [SerializeField] float playerWaitTime = 1.5f;
-    [SerializeField] float endWaitTime = 2f;
+    //[SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
     [SerializeField] private int currentEnemyIndex;
     [Header("Lists")]
@@ -29,7 +33,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
     [SerializeField] EnemyHealthBar enemyHealthBar;
-    private Image diceSlotsImage;
 
     public System.Action OnCombatEnd;
 
@@ -84,8 +87,7 @@ public class CombatManager : MonoBehaviour
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
-        // Since we're taking into account unique enemy situations + moves -> several conditionals for what kind of enemy you will be facing
-
+        playAudio.Play("Encounter");
         UpdateCombatReportText($"{enemy.Name} blocks your way!");
         DrawDice();
     }
