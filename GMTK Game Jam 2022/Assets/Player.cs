@@ -6,20 +6,20 @@ public class Player : MonoBehaviour
 {
     
     public int maxHP;
-    int currentHp;
+    public int currentHP;
 
     public List<PlayableDie> diceInventory;
 
     public void InflictDamage(int dmg)
     {
-        currentHp -= dmg;
-        if (currentHp <= 0) Die();
+        currentHP -= dmg;
+        if (currentHP <= 0) Die();
     }
 
     public int Heal(int healNum)
     {
-        int healAmount = Mathf.Min(healNum, maxHP - currentHp);
-        currentHp += healAmount;
+        int healAmount = Mathf.Min(healNum, maxHP - currentHP);
+        currentHP += healAmount;
         return healAmount;
     }
 

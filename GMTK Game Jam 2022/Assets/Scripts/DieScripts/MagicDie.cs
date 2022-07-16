@@ -12,6 +12,6 @@ public class MagicDie : PlayableDie
 
     public override void Roll()
     {
-        throw new System.NotImplementedException();
+        enemy.InflictDamage(Random.Range(diceData.minDiceVal, diceData.maxDiceVal + 1));
     }
 }

@@ -8,29 +8,34 @@ public class PieceMover : MonoBehaviour
     [SerializeField] GameBoardPiece piece;
     [SerializeField] GameBoard board;
     // Start is called before the first frame update
+
+    bool inCombat = false;
     void Start()
     {
-        
+        CombatManager.Instance.OnCombatEnd += ReturnToOverworld;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (!inCombat)
         {
-            MoveDir(Vector2Int.right);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MoveDir(Vector2Int.left);
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            MoveDir(Vector2Int.up);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            MoveDir(Vector2Int.down);
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                MoveDir(Vector2Int.right);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                MoveDir(Vector2Int.left);
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                MoveDir(Vector2Int.up);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                MoveDir(Vector2Int.down);
+            }
         }
     }
 
@@ -76,8 +81,13 @@ public class PieceMover : MonoBehaviour
 
     public void StartCombat(int index)
     {
-
+        inCombat = true;
         CombatManager.Instance.StartCombat(index);
+    }
+
+    public void ReturnToOverworld()
+    {
+        inCombat = false;
     }
 
     public void ExitLevel()
