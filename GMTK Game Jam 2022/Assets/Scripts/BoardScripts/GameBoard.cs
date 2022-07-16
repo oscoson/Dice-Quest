@@ -63,5 +63,10 @@ public class GameBoard : MonoBehaviour
     {
         boardMap[pos].RemoveEntity();
     }
+
+    public void DestroyBoardEntity(Vector2Int pos)
+    {
+        boardMap[pos].DestroyEntity();
+    }
 }
 

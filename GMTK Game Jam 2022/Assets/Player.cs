@@ -42,6 +42,10 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                 Application.Quit();
+        #endif
     }
 }

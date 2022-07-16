@@ -20,6 +20,18 @@ public class GameBoardTile : MonoBehaviour
         return e;
     }
 
+    public void DestroyEntity()
+    {
+        GameBoardPiece gameEntity = Entity as GameBoardPiece;
+        RemoveEntity();
+
+        Debug.Log(gameEntity);
+        if (gameEntity != null)
+        {
+            Destroy(gameEntity.gameObject);
+        } 
+    }
+
     public bool IsOccupied()
     {
         return Entity != null;
