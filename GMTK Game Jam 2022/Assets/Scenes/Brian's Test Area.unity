@@ -5114,54 +5114,63 @@ MonoBehaviour:
   sounds:
   - name: TitleTheme
     clip: {fileID: 8300000, guid: db3c6bc702459f042989bdff544b3e56, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.25
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: BattleTheme
     clip: {fileID: 8300000, guid: 3425df86e8162924d87de08fbf34f4b8, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.1
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: Encounter
     clip: {fileID: 8300000, guid: 929dc6cda3c2fe34694d2a1452adc5d0, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.55
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: DamagePlayer
     clip: {fileID: 8300000, guid: 24cbac1c18f97fd4cbad246dda4fda06, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Attack
     clip: {fileID: 8300000, guid: 8f0760cf8d73bb24992b9a8eed4dbc5d, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Heal
     clip: {fileID: 8300000, guid: 34cf5ccb9e4e9d2418de257f5ec8466c, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Magic
     clip: {fileID: 8300000, guid: 0d817f859df6fbd4093165e9bf8a2320, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.18
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ExtraTurn
     clip: {fileID: 8300000, guid: d6bab9a897162d34ca9ec350fdd675ae, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Block
     clip: {fileID: 8300000, guid: 64bf42f846bdacd4ba4c37fbd2f70900, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.5
     pitch: 1
     loop: 0
