@@ -7,7 +7,7 @@ using TMPro;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
-    [SerializeField] private Canvas battleCanvas;
+    public GameObject battleCanvas;
     private Player player;
     public TextMeshProUGUI combatReport;
 
@@ -29,7 +29,7 @@ public class CombatManager : MonoBehaviour
     }
     public void StartCombat()
     {
-        battleCanvas.enabled = true;
+        battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory);
         
     }

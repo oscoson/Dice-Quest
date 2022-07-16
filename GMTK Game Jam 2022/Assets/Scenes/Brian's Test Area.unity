@@ -1509,6 +1509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c484dbfa7c3ee94387eae363e95a5ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHP: 0
+  diceInventory: []
 --- !u!1 &1298130865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,6 +1587,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1298130865}
   m_CullTransparentMesh: 1
+--- !u!1 &1331886704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331886706}
+  - component: {fileID: 1331886705}
+  m_Layer: 0
+  m_Name: CombatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1331886705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331886704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb28f094291b3645b926997dc45bcfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleCanvas: {fileID: 1937672170}
+  combatReport: {fileID: 1349865430}
+--- !u!4 &1331886706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331886704}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9776692, y: -0.12340941, z: 0.00074091856}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1349865428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,6 +2469,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1814189836}
   m_CullTransparentMesh: 1
+--- !u!1 &1924564606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1924564608}
+  - component: {fileID: 1924564607}
+  m_Layer: 0
+  m_Name: DiceDrawSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1924564607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924564606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4a29487fe88f84eac18f322dc9c08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dice:
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+  - {fileID: -8894783228039317328, guid: e4efd4cbf3e7d374f9578afd6b9186f3, type: 3}
+--- !u!4 &1924564608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1924564606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3055315, y: 0.95441246, z: -0.16847813}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1937672170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2573,8 +2674,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 218}
-  m_SizeDelta: {x: 1438.3999, y: 562.5}
+  m_AnchoredPosition: {x: 0, y: 220.16547}
+  m_SizeDelta: {x: 1438.3999, y: 550.4799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1950736373
 MonoBehaviour:
