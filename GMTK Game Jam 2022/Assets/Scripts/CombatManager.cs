@@ -8,10 +8,17 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
     public GameObject battleCanvas;
-    private Player player;
+    [SerializeField] Player player;
     [SerializeField] List<Enemy> enemies;
+
+    readonly int maxDicePlay = 3;
+    int dicePlayLeft = 3;
+    bool playerTurn = true;
     
     public TextMeshProUGUI combatReport;
+
+
+
 
     private void Awake()
     {
@@ -27,14 +34,19 @@ public class CombatManager : MonoBehaviour
      
     private void Start()
     {
-        player = FindObjectOfType<Player>();
+        DiceDrawSystem.Instance.OnDrawDie += UpdateDieScreen;
+    }
+
+    void UpdateDieScreen(PlayableDie die)
+    {
+
     }
 
     public void StartCombat(int index)
     {
+        playerTurn = true;
         battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemies[index]);
-        
     }
 
     // Update is called once per frame
@@ -42,4 +54,14 @@ public class CombatManager : MonoBehaviour
     {
 
     }
+
+    public void EndTurn()
+    {
+        playerTurn = !playerTurn;
+    }
+
+
+
+
+
 }
