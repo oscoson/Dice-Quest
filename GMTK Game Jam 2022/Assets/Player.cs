@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     
     public int maxHP;
     public int currentHP;
+    public int energyLevel = 1;
+    public int maxEnergyLevel = 1;
 
     public List<PlayableDie> diceInventory;
 

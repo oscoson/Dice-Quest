@@ -15,6 +15,8 @@ public class BattleHud : MonoBehaviour
         }
         else
         {
+            transform.gameObject.GetComponent<Canvas>().enabled = true;
+            transform.gameObject.SetActive(false);
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }

@@ -10,7 +10,9 @@ public class CombatManager : MonoBehaviour
     [Header("Canvas & Other Objects")]
     public GameObject battleCanvas;
     [SerializeField] Sprite emptySquare;
+    [Header("Player")]
     [SerializeField] Player player;
+    [SerializeField] bool playerTurn = true;
     [Header("Lists")]
     [SerializeField] List<GameObject> enemies;
     [SerializeField] List<GameObject> diceSlots;
@@ -19,6 +21,7 @@ public class CombatManager : MonoBehaviour
     public TextMeshProUGUI combatReport;
     [SerializeField] TextMeshProUGUI availableDiceNum;
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
+    [SerializeField] TextMeshProUGUI energyAmount;
     private Image diceSlotsImage;
 
     public System.Action OnCombatEnd;
@@ -48,10 +51,11 @@ public class CombatManager : MonoBehaviour
 
     void PlayDie(int id)
     {
-        if (id < DiceDrawSystem.Instance.playPile.Count)
+        if (id < DiceDrawSystem.Instance.playPile.Count && player.energyLevel > 0)
         {
             if (DiceDrawSystem.Instance.playPile[id] == null) return;
             DiceDrawSystem.Instance.PlayDie(id);
+            player.energyLevel--;
             UpdateDiceDisplay();
         }
     }
@@ -59,19 +63,27 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(int index)
     {
+        playerTurn = true;
+        player = FindObjectOfType<Player>();
         battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory, player, Instantiate(enemies[index]).GetComponent<Enemy>());
         DiceDrawSystem.Instance.ShuffleDrawPile();
+        BeginTurn();
+    }
+
+    public void BeginTurn()
+    {
         DrawDice();
+    }
+    public void EndTurn()
+    {
+        
     }
 
     public void EndCombat()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            battleCanvas.SetActive(false);
-            OnCombatEnd?.Invoke();
-        }
+        battleCanvas.SetActive(false);
+        OnCombatEnd?.Invoke();
     }
 
     public void DrawDice()
@@ -94,7 +106,10 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EndCombat();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EndCombat();
+        }
         for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
         {
             if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].diceData.diceType == "Damage")
@@ -114,6 +129,9 @@ public class CombatManager : MonoBehaviour
     {
         availableDiceNum.text = DiceDrawSystem.Instance.drawBag.Count.ToString();
         graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
+        Debug.Log(player);
+        energyAmount.text = player.energyLevel.ToString() + "/" + player.maxEnergyLevel.ToString();
+
     }
 
 
