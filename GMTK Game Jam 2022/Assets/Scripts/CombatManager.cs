@@ -7,7 +7,9 @@ using TMPro;
 public class CombatManager : MonoBehaviour
 {
     public static CombatManager Instance;
-    [SerializeField] private Canvas battleCanvas;
+    public GameObject battleCanvas;
+    private Player player;
+    public TextMeshProUGUI combatReport;
 
     private void Awake()
     {
@@ -21,10 +23,15 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
     public void StartCombat()
     {
-        battleCanvas.enabled = true;
-
+        battleCanvas.SetActive(true);
+        DiceDrawSystem.Instance.Init(player.diceInventory);
+        
     }
 
     // Update is called once per frame
