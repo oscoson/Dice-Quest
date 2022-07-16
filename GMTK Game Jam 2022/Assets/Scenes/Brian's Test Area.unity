@@ -623,7 +623,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635235857}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d990e6aa8e994424b93fedda61944bbe, type: 3}
   m_Name: 
@@ -2962,10 +2962,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleCanvas: {fileID: 1937672170}
   emptySquare: {fileID: 1958930996, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}
-  playerWaitTime: 1.5
-  enemyWaitTime: 2
   player: {fileID: 1331886707}
   playerTurn: 1
+  playerWaitTime: 1.5
+  endWaitTime: 2
   currentEnemyIndex: 0
   enemies:
   - {fileID: 4986268860745960866, guid: a79e6fa2573ca5d45b0c3d3146f553ab, type: 3}
@@ -2985,6 +2985,7 @@ MonoBehaviour:
   availableDiceNum: {fileID: 1228894030}
   graveyardDiceNum: {fileID: 1391277870}
   energyAmount: {fileID: 818432088}
+  enemyHealthBar: {fileID: 635235859}
 --- !u!4 &1331886706
 Transform:
   m_ObjectHideFlags: 0
@@ -4598,7 +4599,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937672170}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}

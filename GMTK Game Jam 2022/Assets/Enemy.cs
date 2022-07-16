@@ -10,7 +10,7 @@ public abstract class Enemy : MonoBehaviour
     public int MaxHp { get => maxHp; }
     public int CurrentHp { get => currentHp; }
 
-    private void Start()
+    private void Awake()
     {
         currentHp = maxHp;
         //EnemyHealthBar.Instance.Init(currentHp, maxHp);

@@ -13,6 +13,7 @@ public class CombatManager : MonoBehaviour
     [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
     [Header("Player")]
     [SerializeField] Player player;
+    private Enemy enemy;
     [SerializeField] bool playerTurn = true;
     [SerializeField] float playerWaitTime = 1.5f;
     [SerializeField] float endWaitTime = 2f;
@@ -27,6 +28,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI availableDiceNum;
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
+    [SerializeField] EnemyHealthBar enemyHealthBar;
     private Image diceSlotsImage;
 
     public System.Action OnCombatEnd;
@@ -63,6 +65,8 @@ public class CombatManager : MonoBehaviour
             DiceDrawSystem.Instance.idTracker(id);
             player.energyLevel--;
             UpdateDiceDisplay();
+
+            enemyHealthBar.SetHealth(enemy.CurrentHp);
         }
     }
 
@@ -73,7 +77,10 @@ public class CombatManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         currentEnemyIndex = index;
         battleCanvas.SetActive(true);
-        DiceDrawSystem.Instance.Init(player.diceInventory, player, Instantiate(enemies[index]).GetComponent<Enemy>());
+        GameObject enemyGo = Instantiate(enemies[index]);
+        enemy = enemyGo.GetComponent<Enemy>();
+        enemyHealthBar.Init(enemy.CurrentHp, enemy.MaxHp);
+        DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
         // Since we're taking into account unique enemy situations + moves -> several conditionals for what kind of enemy you will be facing

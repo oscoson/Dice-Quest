@@ -16,11 +16,13 @@ public class EnemyHealthBar : MonoBehaviour
     {
         currentHealth = curHealth;
         maxHealth = max;
-        healthBar.fillAmount = currentHealth;
+        healthBar.fillAmount = currentHealth/maxHealth;
         secondaryHealthBar.fillAmount = currentHealth / maxHealth;
     }
+
     private void Start()
     {
+
     }
 
     private void Update()
@@ -28,7 +30,11 @@ public class EnemyHealthBar : MonoBehaviour
         //currentHealth = player.currentHP;
         //maxHealth = player.maxHP;
         healthBar.fillAmount = currentHealth / maxHealth;
+    }
 
+    public void SetHealth(float health)
+    {
+        currentHealth = health;
     }
 
     private void FixedUpdate()
