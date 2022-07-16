@@ -4,11 +4,12 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] int maxHp;
-    [SerializeField] int currentHp;
+    [SerializeField] protected int maxHp;
+    [HideInInspector] protected int currentHp;
 
     public int MaxHp { get => maxHp; }
     public int CurrentHp { get => currentHp; }
+
 
     public void InflictDamage(int dmg)
     {
@@ -18,6 +19,7 @@ public abstract class Enemy : MonoBehaviour
 
     public void Die()
     {
+        Debug.Log("Die");
         throw new System.NotImplementedException();
     }
 }

@@ -108,12 +108,16 @@ public class DiceDrawSystem : MonoBehaviour
     {
         playPile[ind].Roll();
         discardBag.Add(playPile[ind]);
-        playPile.RemoveAt(ind);
+        playPile[ind] = null;
     }
 
     private void DiscardDice()
     {
-        discardBag.AddRange(playPile);
+        for (int i = 0; i < playPile.Count; i++)
+        {
+            if (playPile[i] != null)
+                discardBag.Add(playPile[i]);
+        }
         playPile.Clear();
     }
 

@@ -13,8 +13,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] List<GameObject> diceSlots;
     public TextMeshProUGUI combatReport;
     private Image diceSlotsImage;
-
-
+    [SerializeField] Sprite emptySquare;
 
 
     private void Awake()
@@ -44,6 +43,7 @@ public class CombatManager : MonoBehaviour
         if(id < DiceDrawSystem.Instance.playPile.Count)
         {
             DiceDrawSystem.Instance.PlayDie(id);
+            UpdateDiceDisplay();
         }
     }
 
@@ -56,16 +56,24 @@ public class CombatManager : MonoBehaviour
     {
         battleCanvas.SetActive(true);
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemies[index]);
+        DiceDrawSystem.Instance.ShuffleDrawPile();
         DrawDice();
     }
 
     public void DrawDice()
     {
         DiceDrawSystem.Instance.DrawDice();
-        Debug.Log(DiceDrawSystem.Instance.playPile.Count);
-        for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1) 
+        UpdateDiceDisplay();
+    }
+
+    public void UpdateDiceDisplay()
+    {
+        for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
         {
-            diceSlots[i].GetComponent<Image>().sprite = DiceDrawSystem.Instance.playPile[i].diceData.diceSprite;
+            if (DiceDrawSystem.Instance.playPile[i] != null)
+                diceSlots[i].GetComponent<Image>().sprite = DiceDrawSystem.Instance.playPile[i].diceData.diceSprite;
+            else
+                diceSlots[i].GetComponent<Image>().sprite = emptySquare;
         }
     }
 

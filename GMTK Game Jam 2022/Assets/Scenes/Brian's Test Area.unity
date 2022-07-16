@@ -1997,6 +1997,7 @@ MonoBehaviour:
   - {fileID: 884790465}
   - {fileID: 1298130865}
   combatReport: {fileID: 1349865430}
+  emptySquare: {fileID: 1958930996, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}
 --- !u!4 &1331886706
 Transform:
   m_ObjectHideFlags: 0
