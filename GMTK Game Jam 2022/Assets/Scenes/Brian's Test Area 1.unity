@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733021534}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.54, y: 2.43, z: 0}
+  m_LocalPosition: {x: -0.46, y: 2.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 1405597258}
   entityType: 1
+  enemyID: 0
 --- !u!212 &733021537
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -399,6 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 1405597258}
   entityType: 0
+  enemyID: 0
 --- !u!212 &1222751145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1181,6 +1183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 1405597258}
   entityType: 1
+  enemyID: 0
 --- !u!212 &1490227449
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1280,6 +1283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 1405597258}
   entityType: 3
+  enemyID: 0
 --- !u!212 &1624743033
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1432,6 +1436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   board: {fileID: 1405597258}
   entityType: 2
+  enemyID: 0
 --- !u!212 &1874531708
 SpriteRenderer:
   m_ObjectHideFlags: 0
