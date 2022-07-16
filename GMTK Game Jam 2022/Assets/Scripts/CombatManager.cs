@@ -10,6 +10,7 @@ public class CombatManager : MonoBehaviour
     public GameObject battleCanvas;
     private Player player;
     [SerializeField] List<Enemy> enemies;
+    
     public TextMeshProUGUI combatReport;
 
     private void Awake()
