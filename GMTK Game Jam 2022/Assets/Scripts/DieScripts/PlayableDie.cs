@@ -17,15 +17,14 @@ public abstract class PlayableDie : MonoBehaviour
     public Sprite DiceSprite { get; protected set; }
     public string DiceType { get; protected set; }
 
+    private void Awake()
+    {
+            LoadCardInfo();
+
+    }
 
     public void Init(Player p, Enemy e)
     {
-        if (!hasFirstInit)
-        {
-            LoadCardInfo();
-            hasFirstInit = true;
-        }
-
         player = p;
         enemy = e;
         hasInit = true;
