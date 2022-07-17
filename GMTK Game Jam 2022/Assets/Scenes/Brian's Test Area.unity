@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -635,6 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1463011963}
   secondaryHealthBar: {fileID: 1468370731}
+  healthBarBackground: {fileID: 1074714870}
   currentHealth: 0
   maxHealth: 0
 --- !u!1 &726655756
@@ -738,7 +739,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -1270,7 +1271,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -2982,7 +2983,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3048,11 +3049,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleCanvas: {fileID: 1937672170}
   playAudio: {fileID: 1833133431}
+  endButton: {fileID: 1143046725}
   emptySquare: {fileID: 1958930996, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}
   player: {fileID: 1331886707}
   playerTurn: 1
   playerWaitTime: 1.5
+  playerCombatEndScreen: 0
   enemyAnimation: {fileID: 1612174648}
+  enemyHealthBar: {fileID: 635235859}
   enemyImage: {fileID: 1612174646}
   currentEnemyIndex: 0
   enemies:
@@ -3077,7 +3081,6 @@ MonoBehaviour:
   availableDiceNum: {fileID: 1228894030}
   graveyardDiceNum: {fileID: 1391277870}
   energyAmount: {fileID: 818432088}
-  enemyHealthBar: {fileID: 635235859}
 --- !u!4 &1331886706
 Transform:
   m_ObjectHideFlags: 0
@@ -4406,7 +4409,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -4547,12 +4550,26 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: OverworldTheme
+    clip: {fileID: 8300000, guid: 706b9728af70b0b4a8cebd801a6a40f7, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: BattleTheme
     clip: {fileID: 8300000, guid: 3425df86e8162924d87de08fbf34f4b8, type: 3}
     mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.1
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: VictoryTheme
+    clip: {fileID: 8300000, guid: f77025208ecedab4bab45cbe3c8ffc8f, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.15
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: Encounter
     clip: {fileID: 8300000, guid: 929dc6cda3c2fe34694d2a1452adc5d0, type: 3}
