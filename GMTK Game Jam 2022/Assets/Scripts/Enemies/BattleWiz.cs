@@ -8,7 +8,7 @@ public class BattleWiz : Enemy
     {
         Debug.Assert(player != null, "Need to call Init!!!!");
         int damage = Random.Range(20, 30);
-        int actualDamage = player.InflictDamage(damage);
-        CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + actualDamage.ToString() + " HP");
+        player.InflictDamage(damage);
+        CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + damage.ToString() + " HP");
     }
 }
