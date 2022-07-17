@@ -158,16 +158,16 @@ public class CombatManager : MonoBehaviour
         for (int i = 0; i < DiceDrawSystem.Instance.playPile.Count; i = i + 1)
         {
             if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Damage")
-                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
+                diceValues[i].text = "Roll " + DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
                 + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() + " DMG";
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Health")
             {
-                diceValues[i].text = DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
+                diceValues[i].text = "Roll " +  DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
                 + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() + " HP";
             }
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Block")
             {
-                diceValues[i].text = "Block " + DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() +" DMG";
+                diceValues[i].text = "Roll " + DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() +" DEF";
             }
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "ExtraTurn")
             {

@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
     {
         int healAmount = Mathf.Min(healNum, maxHP - currentHP);
         currentHP += healAmount;
-        CombatManager.Instance.UpdateCombatReportText("You healed for " + healAmount + "HP");
+        CombatManager.Instance.UpdateCombatReportText("You rolled to heal" + healAmount + " HP");
         return healAmount;
     }
     
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     {
         blockValue += Random.Range(minBlockVal * 0.01f, maxBlockVal * 0.01f);
         Debug.Log(blockValue);
-        CombatManager.Instance.UpdateCombatReportText("You prepare to block " + Mathf.Round(blockValue * 100) + "% of damage");
+        CombatManager.Instance.UpdateCombatReportText("You rolled to block " + Mathf.Round(blockValue * 100) + " % of damage");
     }
 
     public void ExtraTurn()
