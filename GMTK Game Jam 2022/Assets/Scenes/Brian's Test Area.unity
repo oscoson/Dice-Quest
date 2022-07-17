@@ -3110,17 +3110,19 @@ MonoBehaviour:
   currentHP: 100
   energyLevel: 3
   maxEnergyLevel: 3
+  blockValue: 0
   diceInventory:
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
   - {fileID: 1575602906690660984, guid: 72f7e435fd702eb49a4bc768b63b3b27, type: 3}
   - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
-  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
+  - {fileID: 1073964564603377785, guid: eccacf0f3a035ae47a646adf48dd4d6a, type: 3}
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
+  - {fileID: 1073964564603377785, guid: eccacf0f3a035ae47a646adf48dd4d6a, type: 3}
+  - {fileID: 1073964564603377785, guid: eccacf0f3a035ae47a646adf48dd4d6a, type: 3}
   - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
-  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
-  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
+  - {fileID: 1073964564603377785, guid: eccacf0f3a035ae47a646adf48dd4d6a, type: 3}
   - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
 --- !u!1 &1349865428
 GameObject:
