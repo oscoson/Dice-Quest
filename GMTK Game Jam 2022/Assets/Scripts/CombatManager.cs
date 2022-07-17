@@ -128,7 +128,7 @@ public class CombatManager : MonoBehaviour
         OnCombatEnd?.Invoke();
     }
 
-    IEnumerator playerWaitingTime(float waitTime)
+    public IEnumerator playerWaitingTime(float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
         BeginTurn();
@@ -164,6 +164,14 @@ public class CombatManager : MonoBehaviour
             {
                 diceValues[i].text = DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
                 + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() + " HP";
+            }
+            else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Block")
+            {
+                diceValues[i].text = "Block 20% DMG";
+            }
+            else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "ExtraTurn")
+            {
+                diceValues[i].text = "Skip Enemy Turn";
             }
             else
                 diceValues[i].text = "";

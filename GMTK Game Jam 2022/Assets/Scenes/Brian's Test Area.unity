@@ -3110,17 +3110,19 @@ MonoBehaviour:
   currentHP: 100
   energyLevel: 3
   maxEnergyLevel: 3
+  blockValue: 0
   diceInventory:
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
   - {fileID: 1575602906690660984, guid: 72f7e435fd702eb49a4bc768b63b3b27, type: 3}
   - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
-  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
+  - {fileID: 1073964564603377785, guid: eccacf0f3a035ae47a646adf48dd4d6a, type: 3}
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
   - {fileID: 1432833108098619076, guid: 40a7ece47b8642a45b3240f6e2568a00, type: 3}
+  - {fileID: 4663428269956678968, guid: 748bed7190446264a95efeb4c02ee5ab, type: 3}
+  - {fileID: 4663428269956678968, guid: 748bed7190446264a95efeb4c02ee5ab, type: 3}
   - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
-  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
-  - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
+  - {fileID: 1073964564603377785, guid: eccacf0f3a035ae47a646adf48dd4d6a, type: 3}
   - {fileID: 6719682415147718116, guid: 94df1eda036e0f1428f945e7cfca6900, type: 3}
 --- !u!1 &1349865428
 GameObject:
@@ -3673,26 +3675,26 @@ Tilemap:
   - first: {x: 6, y: -1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
-      m_AllTileFlags: 1073741826
+      m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 19
+  - m_RefCount: 18
     m_Data: {fileID: 11400000, guid: 8c7a42de872678e4ba8c3c3f21bcd632, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1a8ce0fed37600744a9cc534bd54bb6b, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 17
+  - m_RefCount: 16
     m_Data: {fileID: 5698770, guid: 025e47a20d162cc4fb57efd9c16e0724, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 352f44fc5287ea74bac98c0316339fb6, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 414064835, guid: 025e47a20d162cc4fb57efd9c16e0724, type: 3}
   - m_RefCount: 1
@@ -4283,8 +4285,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 5774aff416931ab458c6e528db85d177, type: 3}
-  m_Color: {r: 0, g: 0.6509804, b: 0.5525816, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 352f44fc5287ea74bac98c0316339fb6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5122,7 +5124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1437848464557679407, guid: 60b2dec4d5b807344be9158e37454b47, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1437848464557679407, guid: 60b2dec4d5b807344be9158e37454b47, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5179,7 +5181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3595993767719070142, guid: 995437980c3bb9940887ac85e4d72dbd, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3595993767719070142, guid: 995437980c3bb9940887ac85e4d72dbd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5240,7 +5242,7 @@ PrefabInstance:
       objectReference: {fileID: 1405597258}
     - target: {fileID: 7351937607901443582, guid: b6a73b4ee4c57024b89870388e97bdf3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7351937607901443582, guid: b6a73b4ee4c57024b89870388e97bdf3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5297,7 +5299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8576923360967659188, guid: 99ef0c9b0c0513c46ba9cfd4bd7adf07, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8576923360967659188, guid: 99ef0c9b0c0513c46ba9cfd4bd7adf07, type: 3}
       propertyPath: m_LocalPosition.x
