@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   optionsMenu: {fileID: 293377803}
+  playAudio: {fileID: 128376964}
 --- !u!1 &55760120
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +440,135 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58512333}
   m_CullTransparentMesh: 1
+--- !u!1 &128376963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128376965}
+  - component: {fileID: 128376964}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &128376964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128376963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0618e980d95b840903beacac23849b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: TitleTheme
+    clip: {fileID: 8300000, guid: db3c6bc702459f042989bdff544b3e56, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.3
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: OverworldTheme
+    clip: {fileID: 8300000, guid: 706b9728af70b0b4a8cebd801a6a40f7, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.25
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: BattleTheme
+    clip: {fileID: 8300000, guid: 3425df86e8162924d87de08fbf34f4b8, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.25
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: VictoryTheme
+    clip: {fileID: 8300000, guid: f77025208ecedab4bab45cbe3c8ffc8f, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.25
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: DeathTheme
+    clip: {fileID: 8300000, guid: 096167e5446ded9449adb7b09a73b717, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.25
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Encounter
+    clip: {fileID: 8300000, guid: 929dc6cda3c2fe34694d2a1452adc5d0, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.55
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DamagePlayer
+    clip: {fileID: 8300000, guid: 24cbac1c18f97fd4cbad246dda4fda06, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Attack
+    clip: {fileID: 8300000, guid: 8f0760cf8d73bb24992b9a8eed4dbc5d, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Heal
+    clip: {fileID: 8300000, guid: 34cf5ccb9e4e9d2418de257f5ec8466c, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.25
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Magic
+    clip: {fileID: 8300000, guid: 0d817f859df6fbd4093165e9bf8a2320, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.18
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ExtraTurn
+    clip: {fileID: 8300000, guid: d6bab9a897162d34ca9ec350fdd675ae, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Block
+    clip: {fileID: 8300000, guid: 64bf42f846bdacd4ba4c37fbd2f70900, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+--- !u!4 &128376965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128376963}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &150650860
 GameObject:
   m_ObjectHideFlags: 0

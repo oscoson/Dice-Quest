@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerHealthBar : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
-    [SerializeField] private Image secondaryHealthBar;
+    public Image secondaryHealthBar;
     public float currentHealth;
     public float maxHealth;
     [SerializeField] private TextMeshProUGUI text;
@@ -22,24 +22,33 @@ public class PlayerHealthBar : MonoBehaviour
         secondaryHealthBar.fillAmount = healthBar.fillAmount;
     }
 
+    public void ResetSecondaryHealth()
+    {
+        secondaryHealthBar.fillAmount = 1;
+    }
+
     private void Update()
     {
         currentHealth = player.currentHP;
         maxHealth = player.maxHP;
         healthBar.fillAmount = currentHealth / maxHealth;
-
-    }
-
-    private void FixedUpdate()
-    {
-        if(currentHealth >= 0.6)
+        if(currentHealth >= 0.9)
         {
             text.text = Mathf.Round((currentHealth * 10.0f) * 0.1f).ToString() + "/" + maxHealth.ToString();
+        }
+        else if(currentHealth < 0)
+        {
+            text.text = "0/100";
         }
         else
         {
             text.text = ((currentHealth * 10.0f) * 0.1f).ToString() + "/" + maxHealth.ToString();
         }
+
+    }
+
+    private void FixedUpdate()
+    {
         if (secondaryHealthBar.fillAmount > healthBar.fillAmount)
         {
             secondaryHealthBar.fillAmount -= 0.0035f;

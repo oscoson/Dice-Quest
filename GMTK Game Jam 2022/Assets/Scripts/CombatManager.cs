@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class CombatManager : MonoBehaviour
@@ -9,6 +10,7 @@ public class CombatManager : MonoBehaviour
     public static CombatManager Instance;
     [Header("Canvas & Other Objects")]
     public GameObject battleCanvas;
+    public GameObject deathCanvas;
     public AudioManager playAudio;
     public Button endButton;
     [SerializeField] Sprite emptySquare;
@@ -19,6 +21,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] bool playerTurn = true;
     [SerializeField] float playerWaitTime = 1.5f;
     [SerializeField] bool playerCombatEndScreen = false;
+    [SerializeField] PlayerHealthBar healthBar;
     //[SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
     public Animator enemyAnimation;
@@ -158,6 +161,22 @@ public class CombatManager : MonoBehaviour
         StartCoroutine(EnemyDefeated(3f));
     }
 
+    public void LoseCombat()
+    {
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = false;
+        }
+        endButton.interactable = false;
+        healthBar.secondaryHealthBar.fillAmount = 0;
+        UpdateCombatReportText("You have died!");
+        Time.timeScale = 0;
+        playAudio.StopLoop("BattleTheme");
+        playAudio.Play("DeathTheme");
+        deathCanvas.SetActive(true);
+
+    }
+
     public void EndPostScreen()
     {
         playerCombatEndScreen = false;
@@ -214,7 +233,7 @@ public class CombatManager : MonoBehaviour
             }
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Block")
             {
-                diceValues[i].text = "Roll " + DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() +" DEF";
+                diceValues[i].text = "Roll " + DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() +"% DEF";
             }
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "ExtraTurn")
             {
@@ -229,6 +248,28 @@ public class CombatManager : MonoBehaviour
     {
         combatReport.text = report;
     }
+
+    public void RestartButton()
+    {
+        playAudio.StopLoop("DeathTheme");
+        battleCanvas.SetActive(false);
+        deathCanvas.SetActive(false);
+        Time.timeScale = 1;
+        player.currentHP = 100;
+        playAudio.Play("OverworldTheme");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void MainMenuButton()
+    {
+        playAudio.StopLoop("DeathTheme");
+        battleCanvas.SetActive(false);
+        deathCanvas.SetActive(false);
+        Time.timeScale = 1;
+        player.currentHP = 100;
+        SceneManager.LoadScene(0);
+    }
+    
+    
 
     // Update is called once per frame
     void Update()

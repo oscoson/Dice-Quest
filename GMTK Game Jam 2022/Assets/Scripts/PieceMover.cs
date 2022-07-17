@@ -95,7 +95,11 @@ public class PieceMover : MonoBehaviour
     {
 
         inCombat = false;
-        board.DestroyBoardEntity(nextPosition);
+        if(nextPosition != null)
+        {
+            board.DestroyBoardEntity(nextPosition);
+        }
+
     }
 
     public void ExitLevel()
