@@ -45,11 +45,11 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: d009a6ef6ccc3894da0b86b4a59ed9c2
-    name: MyExposedParam
+    name: Master
   - guid: 63432bbe32edea44da49617487f40aef
-    name: MyExposedParam 1
+    name: Music
   - guid: 7d45d787d4208c34db1e5bb3c6c03ccc
-    name: MyExposedParam 2
+    name: SFX
   m_AudioMixerGroupViews:
   - guids:
     - ba9cf1ade26851b429dc4c9550e16030
@@ -104,6 +104,7 @@ AudioMixerSnapshotController:
   m_SnapshotID: c7928d7b6399bdc41ae1bd1e670f5ce9
   m_FloatValues:
     63432bbe32edea44da49617487f40aef: -0.037667945
+    d009a6ef6ccc3894da0b86b4a59ed9c2: 0
   m_TransitionOverrides: {}
 --- !u!243 &398065960514078596
 AudioMixerGroupController:
