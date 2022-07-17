@@ -177,6 +177,14 @@ public class CombatManager : MonoBehaviour
         deathCanvas.SetActive(true);
 
     }
+    public void LoseCombatTwo()
+    {
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                Application.Quit();
+                #endif
+    }
 
     public void EndPostScreen()
     {
