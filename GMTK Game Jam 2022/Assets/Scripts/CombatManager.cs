@@ -167,7 +167,7 @@ public class CombatManager : MonoBehaviour
             }
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Block")
             {
-                diceValues[i].text = "Block 20% DMG";
+                diceValues[i].text = "Block " + DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() +" DMG";
             }
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "ExtraTurn")
             {

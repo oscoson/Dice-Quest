@@ -27,9 +27,11 @@ public class Player : MonoBehaviour
 
     public int InflictDamage(int dmg)
     {
-        Debug.Log(dmg);
+        if (blockValue > 1)
+        {
+            blockValue = 1;
+        }
         int finaldmg = (int)(dmg * (1 - blockValue));
-        Debug.Log(finaldmg);
         currentHP -= finaldmg;
         blockValue = 0;
         CombatManager.Instance.playAudio.Play("DamagePlayer");
@@ -46,10 +48,11 @@ public class Player : MonoBehaviour
         return healAmount;
     }
     
-    public void Block()
+    public void Block(int minBlockVal, int maxBlockVal)
     {
-        blockValue += 0.2f;
-        CombatManager.Instance.UpdateCombatReportText("You prepare to block " + (blockValue * 100) + "% of damage");
+        blockValue += Random.Range(minBlockVal * 0.01f, maxBlockVal * 0.01f);
+        Debug.Log(blockValue);
+        CombatManager.Instance.UpdateCombatReportText("You prepare to block " + Mathf.Round(blockValue * 100) + "% of damage");
     }
 
     public void ExtraTurn()

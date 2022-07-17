@@ -13,6 +13,15 @@ public class BlockDie : PlayableDie
     public override void Roll()
     {
         CombatManager.Instance.playAudio.Play("Block");
-        player.Block();
+        player.Block(MinDiceVal, MaxDiceVal);
+    }
+
+    public override void Upgrade()
+    {
+        if(MaxDiceVal < 30)
+        {
+            MinDiceVal++;
+            MaxDiceVal++;
+        }
     }
 }
