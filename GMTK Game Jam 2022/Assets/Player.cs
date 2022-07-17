@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float blockValue = 0;
 
     public List<PlayableDie> diceInventory;
+    private List<PlayableDie> initialInventory;
     private ShakeUI shaker;
 
     private void Awake()
@@ -22,7 +23,14 @@ public class Player : MonoBehaviour
             GameObject go = Instantiate(diceInventory[i].gameObject, transform);
             diceInventory[i] = go.GetComponent<PlayableDie>();
         }
+        initialInventory = new(diceInventory);
+    }
 
+    public void Init()
+    {
+        currentHP = maxHP;
+        diceInventory = new List<PlayableDie>(initialInventory);
+        diceInventory.ForEach( d => d.ResetValues());
     }
 
     public int InflictDamage(int dmg)
