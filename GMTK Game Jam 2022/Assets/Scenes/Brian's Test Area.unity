@@ -5591,6 +5591,13 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Level Change
+    clip: {fileID: 8300000, guid: 27a6b48512b7248409c73b2e034007cb, type: 3}
+    mixer: {fileID: 5626083575582379563, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1833133432
 Transform:
   m_ObjectHideFlags: 0

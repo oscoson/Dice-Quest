@@ -102,6 +102,7 @@ public class PieceMover : MonoBehaviour
 
     public void ExitLevel()
     {
+        CombatManager.Instance.playAudio.Play("Level Change");
         var plyr = FindObjectOfType<Player>();
         plyr.currentHP = plyr.maxHP;
         CombatManager.Instance.OnCombatEnd -= ReturnToOverworld;
