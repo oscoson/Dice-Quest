@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    
+
     public int maxHP;
     public int currentHP;
     public int energyLevel = 3;
@@ -36,8 +35,12 @@ public class Player : MonoBehaviour
         currentHP -= finaldmg;
         blockValue = 0;
         CombatManager.Instance.playAudio.Play("DamagePlayer");
-        StartCoroutine(shaker.Shake(0.15f, 4f));
+        if(currentHP - finaldmg > 0)
+        {
+            StartCoroutine(shaker.Shake(0.15f, 4f));
+        }
         if (currentHP <= 0) Die();
+
         return finaldmg;
     }
 
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour
         CombatManager.Instance.UpdateCombatReportText("You rolled to heal " + healAmount + " HP!");
         return healAmount;
     }
-    
+
     public void Block(int minBlockVal, int maxBlockVal)
     {
         blockValue += Random.Range(minBlockVal * 0.01f, maxBlockVal * 0.01f);
@@ -68,11 +71,11 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        SceneManager.LoadScene(0);
+        CombatManager.Instance.LoseCombat();
         //#if UNITY_EDITOR
-                //UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         //#else
-                 //Application.Quit();
+        //Application.Quit();
         //#endif
     }
 

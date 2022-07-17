@@ -81,7 +81,10 @@ public class GameBoard : MonoBehaviour
 
     public void DestroyBoardEntity(Vector2Int pos)
     {
-        boardMap[pos].DestroyEntity();
+        if(boardMap[pos] != null)
+        {
+            boardMap[pos].DestroyEntity();
+        }
     }
 }
 
