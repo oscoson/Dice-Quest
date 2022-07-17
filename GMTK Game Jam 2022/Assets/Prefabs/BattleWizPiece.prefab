@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1437848464557679407}
   - component: {fileID: 1437848464557679405}
   - component: {fileID: 1437848464557679404}
+  - component: {fileID: 1725326783438643297}
   m_Layer: 0
   m_Name: BattleWizPiece
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 79fec12c6f0d0cf48aad1ff17c313c36, type: 3}
+  m_Sprite: {fileID: 1403499656, guid: e9ae140d2e589d54db838ceccc42f964, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,3 +101,23 @@ MonoBehaviour:
   board: {fileID: 0}
   entityType: 1
   enemyID: 1
+--- !u!95 &1725326783438643297
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1437848464557679406}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f27731b9ca31a7345873db2a6adc2211, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
