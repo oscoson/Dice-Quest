@@ -102,6 +102,8 @@ public class PieceMover : MonoBehaviour
 
     public void ExitLevel()
     {
+        var plyr = FindObjectOfType<Player>();
+        plyr.currentHP = plyr.maxHP;
         CombatManager.Instance.OnCombatEnd -= ReturnToOverworld;
 
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
