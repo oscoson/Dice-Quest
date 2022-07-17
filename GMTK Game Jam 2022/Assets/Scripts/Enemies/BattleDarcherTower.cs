@@ -8,7 +8,7 @@ public class BattleDarcherTower : Enemy
     {
         Debug.Assert(player != null, "Need to call Init!!!!");
         int damage = Random.Range(5, 15);
-        int actualDamage = player.InflictDamage(damage);
-        CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + actualDamage.ToString() + " HP");
+        player.InflictDamage(damage);
+        CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + damage.ToString() + " HP");
     }
 }

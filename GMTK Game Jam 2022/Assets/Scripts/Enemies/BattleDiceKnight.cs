@@ -8,7 +8,7 @@ public class BattleDiceKnight : Enemy
     {
         Debug.Assert(player != null, "Need to call Init!!!!");
         int damage = Random.Range(60, 20);
-        int actualDamage = player.InflictDamage(damage);
-        CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + actualDamage.ToString() + " HP");
+        player.InflictDamage(damage);
+        CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + damage.ToString() + " HP");
     }
 }
