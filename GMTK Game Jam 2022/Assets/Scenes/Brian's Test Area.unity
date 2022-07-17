@@ -4813,7 +4813,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937672170}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 1050372811}
@@ -5262,11 +5262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3595993767719070142, guid: 995437980c3bb9940887ac85e4d72dbd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.62
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 3595993767719070142, guid: 995437980c3bb9940887ac85e4d72dbd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.65
+      value: -2.79
       objectReference: {fileID: 0}
     - target: {fileID: 3595993767719070142, guid: 995437980c3bb9940887ac85e4d72dbd, type: 3}
       propertyPath: m_LocalPosition.z
