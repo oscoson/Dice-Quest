@@ -30,6 +30,11 @@ public abstract class PlayableDie : MonoBehaviour
         hasInit = true;
     }
 
+    public void ResetValues()
+    {
+        LoadCardInfo();
+    }
+
     private void LoadCardInfo()
     {
         MinDiceVal = diceData.minDiceVal;
