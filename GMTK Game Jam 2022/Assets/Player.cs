@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     public int InflictDamage(int dmg)
     {
+        Debug.Log(dmg);
         int finaldmg = (int)(dmg * (1 - blockValue));
         Debug.Log(finaldmg);
         currentHP -= finaldmg;
@@ -49,6 +50,12 @@ public class Player : MonoBehaviour
     {
         blockValue += 0.2f;
         CombatManager.Instance.UpdateCombatReportText("You prepare to block " + (blockValue * 100) + "% of damage");
+    }
+
+    public void ExtraTurn()
+    {
+        CombatManager.Instance.UpdateCombatReportText("TIME WARPS! You take an extra turn!");
+        StartCoroutine(CombatManager.Instance.playerWaitingTime(1.2f));
     }
 
     public void AddDie(PlayableDie die)
