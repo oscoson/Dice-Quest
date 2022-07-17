@@ -151,6 +151,7 @@ public class DiceDrawSystem : MonoBehaviour
         discardBag.Add(playPile[ind]);
         playPile[ind] = null;
     }
+    
 
     private void DiscardDice()
     {
