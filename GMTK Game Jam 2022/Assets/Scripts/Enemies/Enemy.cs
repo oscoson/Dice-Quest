@@ -27,7 +27,7 @@ public abstract class Enemy : MonoBehaviour
         currentHp = maxHp;
     }
 
-    public void InflictDamage(int dmg)
+    public virtual void InflictDamage(int dmg)
     {
         currentHp -= dmg;
         CombatManager.Instance.enemyAnimation.SetBool("isHit", true);
@@ -44,7 +44,7 @@ public abstract class Enemy : MonoBehaviour
         CombatManager.Instance.EndCombat();
     }
 
-    private IEnumerator hitAnimCancel(float animTime)
+    protected IEnumerator hitAnimCancel(float animTime)
     {
         yield return new WaitForSecondsRealtime(animTime);
         CombatManager.Instance.enemyAnimation.SetBool("isHit", false);

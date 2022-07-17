@@ -19,7 +19,7 @@ public abstract class PlayableDie : MonoBehaviour
 
     private void Awake()
     {
-            LoadCardInfo();
+            LoadDieInfo();
 
     }
 
@@ -30,7 +30,7 @@ public abstract class PlayableDie : MonoBehaviour
         hasInit = true;
     }
 
-    private void LoadCardInfo()
+    private void LoadDieInfo()
     {
         MinDiceVal = diceData.minDiceVal;
         MaxDiceVal = diceData.maxDiceVal;
