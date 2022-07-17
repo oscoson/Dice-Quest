@@ -8,7 +8,7 @@ public class DustEffectDestroy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dust.Play("Player Step", 1);
+        dust.Play("Player Step", 0);
         StartCoroutine(DestroyIn(0.4f));
     }
 
