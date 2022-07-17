@@ -79,8 +79,4 @@ public class Player : MonoBehaviour
         //#endif
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H)) { currentHP += 10; currentHP = Mathf.Min(maxHP, currentHP); }
-    }
 }
