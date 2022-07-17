@@ -3531,7 +3531,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3551,8 +3551,8 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
+      m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -3671,7 +3671,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3694,10 +3694,10 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 1a8ce0fed37600744a9cc534bd54bb6b, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 16
+  - m_RefCount: 13
     m_Data: {fileID: 5698770, guid: 025e47a20d162cc4fb57efd9c16e0724, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 3
+    m_Data: {fileID: -357426089, guid: 025e47a20d162cc4fb57efd9c16e0724, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 352f44fc5287ea74bac98c0316339fb6, type: 3}
   - m_RefCount: 1
@@ -3705,7 +3705,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: -1586935619, guid: 025e47a20d162cc4fb57efd9c16e0724, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 16
+  - m_RefCount: 15
     m_Data:
       e00: 1
       e01: 0
@@ -3741,7 +3741,7 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 0
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data:
       e00: -1
       e01: -0.00000008742278
@@ -4610,28 +4610,28 @@ MonoBehaviour:
   - name: TitleTheme
     clip: {fileID: 8300000, guid: db3c6bc702459f042989bdff544b3e56, type: 3}
     mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
-    volume: 0.25
+    volume: 0.3
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: OverworldTheme
     clip: {fileID: 8300000, guid: 706b9728af70b0b4a8cebd801a6a40f7, type: 3}
     mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
-    volume: 0.1
+    volume: 0.25
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: BattleTheme
     clip: {fileID: 8300000, guid: 3425df86e8162924d87de08fbf34f4b8, type: 3}
     mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
-    volume: 0.1
+    volume: 0.25
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: VictoryTheme
     clip: {fileID: 8300000, guid: f77025208ecedab4bab45cbe3c8ffc8f, type: 3}
     mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
-    volume: 0.15
+    volume: 0.25
     pitch: 1
     loop: 0
     source: {fileID: 0}
