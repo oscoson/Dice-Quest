@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89533d03d7497b84e9a7dd822ffc6267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 40
+  maxHp: 120
   sprites:
   - {fileID: 995873658, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
   - {fileID: -1181774167, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}

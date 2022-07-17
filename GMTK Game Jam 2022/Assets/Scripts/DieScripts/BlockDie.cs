@@ -18,10 +18,10 @@ public class BlockDie : PlayableDie
 
     public override void Upgrade()
     {
-        if(MaxDiceVal < 30)
+        if(MaxDiceVal < 50)
         {
-            MinDiceVal++;
-            MaxDiceVal++;
+            MinDiceVal += Random.Range(1,5);
+            MaxDiceVal += Random.Range(4,7);
         }
     }
 }
