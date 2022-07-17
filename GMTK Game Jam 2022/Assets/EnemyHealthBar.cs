@@ -8,6 +8,7 @@ public class EnemyHealthBar : MonoBehaviour
     public static EnemyHealthBar Instance;
     [SerializeField] private Image healthBar;
     [SerializeField] private Image secondaryHealthBar;
+    public Image healthBarBackground;
     public float currentHealth;
     public float maxHealth;
     private Enemy enemy;

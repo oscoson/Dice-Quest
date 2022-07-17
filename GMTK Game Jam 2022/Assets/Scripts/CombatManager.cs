@@ -85,6 +85,7 @@ public class CombatManager : MonoBehaviour
         //canvas set
         battleCanvas.SetActive(true);
         endButton.interactable = true;
+        enemyHealthBar.healthBarBackground.enabled = true;
         //Enemy assign
         currentEnemyIndex = index;
         GameObject enemyGo = Instantiate(enemies[index]);
@@ -133,6 +134,7 @@ public class CombatManager : MonoBehaviour
             diceSlots[i].GetComponent<Button>().interactable = false;
         }
         endButton.interactable = false;
+        enemyHealthBar.healthBarBackground.enabled = false;
         enemyAnimation.SetBool("isDead", true);
         player.diceInventory.ForEach(d => d.Upgrade());
         playAudio.StopLoop("BattleTheme");
