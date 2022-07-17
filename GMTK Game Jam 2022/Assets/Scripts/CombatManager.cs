@@ -165,6 +165,10 @@ public class CombatManager : MonoBehaviour
                 diceValues[i].text = DiceDrawSystem.Instance.playPile[i].MinDiceVal.ToString() + "-" 
                 + DiceDrawSystem.Instance.playPile[i].MaxDiceVal.ToString() + " HP";
             }
+            else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "Block")
+            {
+                diceValues[i].text = "Block 20% DMG";
+            }
             else
                 diceValues[i].text = "";
         }
