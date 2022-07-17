@@ -20,7 +20,7 @@ public class BattleDiceKnight : Enemy
                 CombatManager.Instance.UpdateCombatReportText($"{Name} pierces you for " + actualDamage.ToString() + " HP");
                 break;
             case 1:
-                int pokeDmg = Random.Range(1, 11);
+                int pokeDmg = Random.Range(10, 21);
                 int actPokeDamage = player.InflictDamage(pokeDmg);
                 CombatManager.Instance.UpdateCombatReportText($"{Name} pokes you for " + actPokeDamage.ToString() + " HP");
                 break;

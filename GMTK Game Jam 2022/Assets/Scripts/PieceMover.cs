@@ -8,7 +8,6 @@ public class PieceMover : MonoBehaviour
     [SerializeField] GameBoardPiece piece;
     [SerializeField] GameBoard board;
     [SerializeField] GameObject dustEffect;
-    [SerializeField] Transform feet;
     Vector2Int nextPosition;
     bool inCombat = false;
     void Start()
@@ -21,24 +20,20 @@ public class PieceMover : MonoBehaviour
     {
         if (!inCombat)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
-                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.right);
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
-                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.left);
             }
-            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
-                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.up);
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
-                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.down);
             }
         }
@@ -47,13 +42,16 @@ public class PieceMover : MonoBehaviour
     public void MoveDir(Vector2Int direction)
     {
         Debug.Assert(Mathf.Abs(direction.x) + Mathf.Abs(direction.y) == 1);
+
         nextPosition = piece.BoardPosition + direction;
         if (board.HasTile(nextPosition))
         {
             GameBoardPiece entity = board.GetEntity(nextPosition);
             if (entity == null)
             {
-                if(direction == Vector2Int.left)
+                Instantiate(dustEffect, board.CellToWorld(piece.BoardPosition), Quaternion.identity);
+
+                if (direction == Vector2Int.left)
                 {
                     piece.MoveLeft();
                 } else if(direction == Vector2Int.right)
