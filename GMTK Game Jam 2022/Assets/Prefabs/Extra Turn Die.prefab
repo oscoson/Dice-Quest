@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4663428269956678969}
   - component: {fileID: 4663428269956678968}
   m_Layer: 0
-  m_Name: ExtraTurnDie
+  m_Name: Extra Turn Die
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

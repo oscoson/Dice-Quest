@@ -45,5 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 20
-  sprite: {fileID: 21300000, guid: 65f73629bbc6a754dbf0ee5aabf34279, type: 3}
-  name: DiceWiz
+  sprites:
+  - {fileID: -672048047, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  - {fileID: 679885158, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  - {fileID: 1791584264, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  - {fileID: 1990891689, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  - {fileID: -832512752, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  - {fileID: -262790074, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  - {fileID: 1776386334, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  - {fileID: 192581167, guid: 23f5e8a01535d4e44a2f2f8f0448f8a9, type: 3}
+  name: Oz the Dice Wizard

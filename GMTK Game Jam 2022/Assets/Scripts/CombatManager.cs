@@ -10,20 +10,20 @@ public class CombatManager : MonoBehaviour
     [Header("Canvas & Other Objects")]
     public GameObject battleCanvas;
     public AudioManager playAudio;
+    public Button endButton;
     [SerializeField] Sprite emptySquare;
     
 
     [Header("Player")]
     [SerializeField] Player player;
-    
     [SerializeField] bool playerTurn = true;
-
-    [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
     [SerializeField] float playerWaitTime = 1.5f;
+    [SerializeField] bool playerCombatEndScreen = false;
     //[SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
     public Animator enemyAnimation;
     private Enemy enemy;
+    [SerializeField] EnemyHealthBar enemyHealthBar;
     [SerializeField] private Image enemyImage;
     [SerializeField] private int currentEnemyIndex;
     [Header("Lists")]
@@ -35,7 +35,13 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI availableDiceNum;
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
-    [SerializeField] EnemyHealthBar enemyHealthBar;
+    private List<Sprite> animationFrames;
+
+    private Coroutine currentAnimationCoroutine;
+
+    int spriteIndex = 0;
+
+
 
     public System.Action OnCombatEnd;
 
@@ -55,6 +61,7 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
+        playAudio.Play("OverworldTheme");
         for (int i = 0; i < diceSlots.Count; i++)
         {
             diceSlots[i].GetComponent<DiceSlot>().OnDiePlay += PlayDie;
@@ -79,23 +86,38 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(int index)
     {
+        spriteIndex = 0;
+
         //Player assign
         playerTurn = true;
         player = FindObjectOfType<Player>();
         //canvas set
         battleCanvas.SetActive(true);
+        endButton.interactable = true;
+        enemyHealthBar.healthBarBackground.enabled = true;
         //Enemy assign
         currentEnemyIndex = index;
         GameObject enemyGo = Instantiate(enemies[index]);
         enemy = enemyGo.GetComponent<Enemy>();
         enemy.Init(player);
-        enemyImage.sprite = enemy.sprite;
+
+        animationFrames = new(enemy.sprites);
+        enemyImage.sprite = animationFrames[0];
+
+        currentAnimationCoroutine = StartCoroutine(IncrementSpriteIndex());
+
         enemyHealthBar.Init(enemy.CurrentHp, enemy.MaxHp);
         //DiceDrawSystem Calls
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
+        //renenable dice slots
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = true;
+        }
         //Play Audio
+        playAudio.Pause("OverworldTheme");
         playAudio.Play("Encounter");
         playAudio.Play("BattleTheme");
         UpdateCombatReportText($"{enemy.Name} blocks your way!");
@@ -116,23 +138,48 @@ public class CombatManager : MonoBehaviour
     public void EnemyTurn()
     {
         enemy.PerformAction();
-        StartCoroutine(playerWaitingTime(playerWaitTime));
+        StartCoroutine(PlayerWaitingTime(2f));
     }
 
     public void EndCombat()
     {
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = false;
+        }
+        endButton.interactable = false;
+        enemyHealthBar.healthBarBackground.enabled = false;
+        enemyAnimation.SetBool("isDead", true);
         player.diceInventory.ForEach(d => d.Upgrade());
-        Destroy(enemy.gameObject);
         playAudio.StopLoop("BattleTheme");
-        battleCanvas.SetActive(false);
-        OnCombatEnd?.Invoke();
+        playAudio.Play("VictoryTheme");
+        UpdateCombatReportText(enemy.Name + " has been defeated!");
+        Destroy(enemy.gameObject);
+        StartCoroutine(EnemyDefeated(3f));
     }
 
-    public IEnumerator playerWaitingTime(float waitTime)
+    public void EndPostScreen()
+    {
+        playerCombatEndScreen = false;
+        playAudio.StopLoop("VictoryTheme");
+        playAudio.UnPause("OverworldTheme");
+        battleCanvas.SetActive(false);
+        OnCombatEnd?.Invoke();
+        StopCoroutine(currentAnimationCoroutine);
+    }
+
+    public IEnumerator PlayerWaitingTime(float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
         BeginTurn();
 
+    }
+
+    public IEnumerator EnemyDefeated(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        UpdateCombatReportText("Your Dice have been upgraded!");
+        playerCombatEndScreen = true;
     }
 
     public void DrawDice()
@@ -186,9 +233,10 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        if(Input.GetButton("Fire1") && playerCombatEndScreen)
         {
-            EndCombat();
+            EndPostScreen();
         }
     }
 
@@ -197,13 +245,18 @@ public class CombatManager : MonoBehaviour
         availableDiceNum.text = DiceDrawSystem.Instance.drawBag.Count.ToString();
         graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
         energyAmount.text = player.energyLevel.ToString() + "/" + player.maxEnergyLevel.ToString();
-
     }
 
-
-
-
-
-
+    IEnumerator IncrementSpriteIndex()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.15f);
+            spriteIndex++;
+            spriteIndex %= animationFrames.Count;
+            //spriteIndex = Random.Range(0, animationFrames.Count);
+            enemyImage.sprite = animationFrames[spriteIndex];
+        }
+    }
 
 }

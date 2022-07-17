@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81621b584177384b9dc282d427184b8, type: 3}
   m_Name: Magic Die
   m_EditorClassIdentifier: 
-  minDiceVal: 1
+  minDiceVal: 5
   maxDiceVal: 15
   diceSprite: {fileID: -2038119348, guid: 0ad1a1ed26bd2f34a90378c90cd05eda, type: 3}
   diceType: Damage

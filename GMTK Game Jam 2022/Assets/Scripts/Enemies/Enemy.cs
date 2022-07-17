@@ -6,7 +6,7 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] protected int maxHp;
     [HideInInspector] protected int currentHp;
-    public Sprite sprite;
+    public List<Sprite> sprites;
 
     protected Player player;
     public int MaxHp { get => maxHp; }
@@ -42,7 +42,6 @@ public abstract class Enemy : MonoBehaviour
         Debug.Log("Die");
         CombatManager.Instance.UpdateCombatReportText("Good job!");
         CombatManager.Instance.EndCombat();
-        Destroy(gameObject);
     }
 
     protected IEnumerator hitAnimCancel(float animTime)

@@ -45,5 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 40
-  sprite: {fileID: 21300000, guid: 655362eb1baa18449a747c2fb4a37d3b, type: 3}
-  name: Battle Wiz
+  sprites:
+  - {fileID: 995873658, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  - {fileID: -1181774167, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  - {fileID: -2025883822, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  - {fileID: 1556846645, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  - {fileID: 959164629, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  - {fileID: 1113021765, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  - {fileID: 2059875418, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  - {fileID: 255777348, guid: a82b7115fef6da14aa7ea4cabbaa297a, type: 3}
+  name: Merlin the Battle Wiz

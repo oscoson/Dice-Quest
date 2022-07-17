@@ -7,8 +7,8 @@ public class PieceMover : MonoBehaviour
 {
     [SerializeField] GameBoardPiece piece;
     [SerializeField] GameBoard board;
-    // Start is called before the first frame update
-
+    [SerializeField] GameObject dustEffect;
+    [SerializeField] Transform feet;
     Vector2Int nextPosition;
     bool inCombat = false;
     void Start()
@@ -23,18 +23,22 @@ public class PieceMover : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.RightArrow))
             {
+                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.right);
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.left);
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
+                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.up);
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
+                Instantiate(dustEffect, feet.position, Quaternion.identity);
                 MoveDir(Vector2Int.down);
             }
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -44,21 +45,20 @@ public class Player : MonoBehaviour
     {
         int healAmount = Mathf.Min(healNum, maxHP - currentHP);
         currentHP += healAmount;
-        CombatManager.Instance.UpdateCombatReportText("You rolled to heal" + healAmount + " HP");
+        CombatManager.Instance.UpdateCombatReportText("You rolled to heal " + healAmount + " HP!");
         return healAmount;
     }
     
     public void Block(int minBlockVal, int maxBlockVal)
     {
         blockValue += Random.Range(minBlockVal * 0.01f, maxBlockVal * 0.01f);
-        Debug.Log(blockValue);
-        CombatManager.Instance.UpdateCombatReportText("You rolled to block " + Mathf.Round(blockValue * 100) + " % of damage");
+        CombatManager.Instance.UpdateCombatReportText("You rolled to block " + Mathf.Round(blockValue * 100) + "% of damage!");
     }
 
     public void ExtraTurn()
     {
         CombatManager.Instance.UpdateCombatReportText("TIME WARPS! You take an extra turn!");
-        StartCoroutine(CombatManager.Instance.playerWaitingTime(1.2f));
+        StartCoroutine(CombatManager.Instance.PlayerWaitingTime(1.2f));
     }
 
     public void AddDie(PlayableDie die)
@@ -68,10 +68,11 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-        #else
-                 Application.Quit();
-        #endif
+        SceneManager.LoadScene(0);
+        //#if UNITY_EDITOR
+                //UnityEditor.EditorApplication.isPlaying = false;
+        //#else
+                 //Application.Quit();
+        //#endif
     }
 }
