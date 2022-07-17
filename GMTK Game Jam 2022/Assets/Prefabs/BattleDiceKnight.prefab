@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 150
   sprite: {fileID: 21300000, guid: a6518c3480c288c40bfbfba31ea38a8b, type: 3}
-  name: Battle Dice Knight
+  name: Dice Knight

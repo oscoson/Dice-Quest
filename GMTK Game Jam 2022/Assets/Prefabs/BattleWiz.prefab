@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 40
   sprite: {fileID: 21300000, guid: 655362eb1baa18449a747c2fb4a37d3b, type: 3}
-  name: BattleWiz
+  name: Battle Wiz
