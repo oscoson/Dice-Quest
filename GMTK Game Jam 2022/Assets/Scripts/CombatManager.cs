@@ -36,6 +36,13 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
     [SerializeField] EnemyHealthBar enemyHealthBar;
+    private List<Sprite> animationFrames;
+
+    private Coroutine currentAnimationCoroutine;
+
+    int spriteIndex = 0;
+
+
 
     public System.Action OnCombatEnd;
 
@@ -79,6 +86,8 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(int index)
     {
+        spriteIndex = 0;
+
         //Player assign
         playerTurn = true;
         player = FindObjectOfType<Player>();
@@ -89,7 +98,12 @@ public class CombatManager : MonoBehaviour
         GameObject enemyGo = Instantiate(enemies[index]);
         enemy = enemyGo.GetComponent<Enemy>();
         enemy.Init(player);
-        enemyImage.sprite = enemy.sprite;
+
+        animationFrames = new(enemy.sprites);
+        enemyImage.sprite = animationFrames[0];
+
+        currentAnimationCoroutine = StartCoroutine(IncrementSpriteIndex());
+
         enemyHealthBar.Init(enemy.CurrentHp, enemy.MaxHp);
         //DiceDrawSystem Calls
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
@@ -126,6 +140,7 @@ public class CombatManager : MonoBehaviour
         playAudio.StopLoop("BattleTheme");
         battleCanvas.SetActive(false);
         OnCombatEnd?.Invoke();
+        StopCoroutine(currentAnimationCoroutine);
     }
 
     public IEnumerator playerWaitingTime(float waitTime)
@@ -186,10 +201,10 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            EndCombat();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    EndCombat();
+        //}
     }
 
     private void FixedUpdate()
@@ -198,6 +213,19 @@ public class CombatManager : MonoBehaviour
         graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
         energyAmount.text = player.energyLevel.ToString() + "/" + player.maxEnergyLevel.ToString();
 
+    }
+
+    IEnumerator IncrementSpriteIndex()
+    {
+        while (true)
+        {
+            Debug.Log("incremnet");
+            yield return new WaitForSeconds(0.15f);
+            spriteIndex++;
+            spriteIndex %= animationFrames.Count;
+            //spriteIndex = Random.Range(0, animationFrames.Count);
+            enemyImage.sprite = animationFrames[spriteIndex];
+        }
     }
 
 

@@ -45,5 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 150
-  sprite: {fileID: 21300000, guid: a6518c3480c288c40bfbfba31ea38a8b, type: 3}
+  sprites:
+  - {fileID: 1064883298, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
+  - {fileID: -1505672663, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
+  - {fileID: -1015222869, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
+  - {fileID: 37157490, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
+  - {fileID: 749824019, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
+  - {fileID: 523168314, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
+  - {fileID: -1401279534, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
+  - {fileID: -1798694741, guid: bd9b953aae545a1419e0bc8d48847068, type: 3}
   name: Dice Knight
