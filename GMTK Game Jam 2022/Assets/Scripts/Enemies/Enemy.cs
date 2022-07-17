@@ -42,7 +42,6 @@ public abstract class Enemy : MonoBehaviour
         Debug.Log("Die");
         CombatManager.Instance.UpdateCombatReportText("Good job!");
         CombatManager.Instance.EndCombat();
-        Destroy(gameObject);
     }
 
     private IEnumerator hitAnimCancel(float animTime)

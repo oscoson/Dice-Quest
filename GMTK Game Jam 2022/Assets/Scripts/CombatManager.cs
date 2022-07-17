@@ -10,20 +10,20 @@ public class CombatManager : MonoBehaviour
     [Header("Canvas & Other Objects")]
     public GameObject battleCanvas;
     public AudioManager playAudio;
+    public Button endButton;
     [SerializeField] Sprite emptySquare;
     
 
     [Header("Player")]
     [SerializeField] Player player;
-    
     [SerializeField] bool playerTurn = true;
-
-    [Header("Waiting Times")] // I aint gonna lie brian this is pretty scuffed LOL
     [SerializeField] float playerWaitTime = 1.5f;
+    [SerializeField] bool playerCombatEndScreen = false;
     //[SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
     public Animator enemyAnimation;
     private Enemy enemy;
+    [SerializeField] EnemyHealthBar enemyHealthBar;
     [SerializeField] private Image enemyImage;
     [SerializeField] private int currentEnemyIndex;
     [Header("Lists")]
@@ -35,7 +35,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI availableDiceNum;
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
-    [SerializeField] EnemyHealthBar enemyHealthBar;
 
     public System.Action OnCombatEnd;
 
@@ -55,6 +54,7 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
+        playAudio.Play("OverworldTheme");
         for (int i = 0; i < diceSlots.Count; i++)
         {
             diceSlots[i].GetComponent<DiceSlot>().OnDiePlay += PlayDie;
@@ -84,6 +84,7 @@ public class CombatManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         //canvas set
         battleCanvas.SetActive(true);
+        endButton.interactable = true;
         //Enemy assign
         currentEnemyIndex = index;
         GameObject enemyGo = Instantiate(enemies[index]);
@@ -95,7 +96,13 @@ public class CombatManager : MonoBehaviour
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
+        //renenable dice slots
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = true;
+        }
         //Play Audio
+        playAudio.Pause("OverworldTheme");
         playAudio.Play("Encounter");
         playAudio.Play("BattleTheme");
         UpdateCombatReportText($"{enemy.Name} blocks your way!");
@@ -116,23 +123,46 @@ public class CombatManager : MonoBehaviour
     public void EnemyTurn()
     {
         enemy.PerformAction();
-        StartCoroutine(playerWaitingTime(playerWaitTime));
+        StartCoroutine(PlayerWaitingTime(playerWaitTime));
     }
 
     public void EndCombat()
     {
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = false;
+        }
+        endButton.interactable = false;
+        enemyAnimation.SetBool("isDead", true);
         player.diceInventory.ForEach(d => d.Upgrade());
-        Destroy(enemy.gameObject);
         playAudio.StopLoop("BattleTheme");
+        playAudio.Play("VictoryTheme");
+        UpdateCombatReportText(enemy.name + " has been defeated!");
+        Destroy(enemy.gameObject);
+        StartCoroutine(EnemyDefeated(3f));
+    }
+
+    public void EndPostScreen()
+    {
+        playerCombatEndScreen = false;
+        playAudio.StopLoop("VictoryTheme");
+        playAudio.UnPause("OverworldTheme");
         battleCanvas.SetActive(false);
         OnCombatEnd?.Invoke();
     }
 
-    public IEnumerator playerWaitingTime(float waitTime)
+    public IEnumerator PlayerWaitingTime(float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
         BeginTurn();
 
+    }
+
+    public IEnumerator EnemyDefeated(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
+        UpdateCombatReportText("Your Dice have been upgraded!");
+        playerCombatEndScreen = true;
     }
 
     public void DrawDice()
@@ -189,6 +219,10 @@ public class CombatManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             EndCombat();
+        }
+        if(Input.GetButton("Fire1") && playerCombatEndScreen)
+        {
+            EndPostScreen();
         }
     }
 
