@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 60
-  sprite: {fileID: 21300000, guid: b7f43fb6676705a46acd5d3e025eef62, type: 3}
-  name: D Holder
+  sprite: {fileID: 21300000, guid: 41b2a3d37cad1054dab45d34e04568d8, type: 3}
+  name: DeHolder
