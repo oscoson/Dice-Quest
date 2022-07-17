@@ -124,7 +124,7 @@ public class CombatManager : MonoBehaviour
     public void EnemyTurn()
     {
         enemy.PerformAction();
-        StartCoroutine(PlayerWaitingTime(playerWaitTime));
+        StartCoroutine(PlayerWaitingTime(2f));
     }
 
     public void EndCombat()
@@ -139,7 +139,7 @@ public class CombatManager : MonoBehaviour
         player.diceInventory.ForEach(d => d.Upgrade());
         playAudio.StopLoop("BattleTheme");
         playAudio.Play("VictoryTheme");
-        UpdateCombatReportText(enemy.name + " has been defeated!");
+        UpdateCombatReportText(enemy.Name + " has been defeated!");
         Destroy(enemy.gameObject);
         StartCoroutine(EnemyDefeated(3f));
     }

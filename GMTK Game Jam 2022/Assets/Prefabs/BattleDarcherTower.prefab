@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 40
   sprite: {fileID: 21300000, guid: 5c9dbdedee2dd724caeab9480154249c, type: 3}
-  name: Darcher Tower
+  name: Stacked the Dice Tower
