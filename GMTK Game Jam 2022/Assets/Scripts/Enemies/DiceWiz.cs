@@ -13,7 +13,7 @@ public class DiceWiz : Enemy
 
     IEnumerator DoDamage()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 5; i++)
         {
             int damage = strength;
             int actualDamage = player.InflictDamage(damage);
