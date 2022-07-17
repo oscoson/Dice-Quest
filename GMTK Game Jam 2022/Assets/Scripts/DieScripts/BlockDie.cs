@@ -20,8 +20,8 @@ public class BlockDie : PlayableDie
     {
         if(MaxDiceVal < 50)
         {
-            MinDiceVal += Random.Range(1,5);
-            MaxDiceVal += Random.Range(4,7);
+            MinDiceVal += Random.Range(1, 4);
+            MaxDiceVal += Random.Range(3, 5);
         }
     }
 }
