@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Brian's Test Area 1.unity
     guid: 09a628d7c7f1d8e4e9e8388ae5db2203
+  - enabled: 1
+    path: Assets/Scenes/Indy Test.unity
+    guid: 38b0045752eaf194bb2ea284502810d9
   m_configObjects: {}
