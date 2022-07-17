@@ -140,6 +140,7 @@ public class CombatManager : MonoBehaviour
 
     public void EnemyTurn()
     {
+        endButton.interactable = false;
         enemy.PerformAction();
         StartCoroutine(PlayerWaitingTime(2f));
     }
@@ -190,6 +191,7 @@ public class CombatManager : MonoBehaviour
     public IEnumerator PlayerWaitingTime(float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
+        endButton.interactable = true;
         BeginTurn();
 
     }
