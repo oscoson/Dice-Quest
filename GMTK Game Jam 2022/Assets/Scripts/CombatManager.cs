@@ -35,7 +35,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI availableDiceNum;
     [SerializeField] TextMeshProUGUI graveyardDiceNum;
     [SerializeField] TextMeshProUGUI energyAmount;
-    [SerializeField] EnemyHealthBar enemyHealthBar;
     private List<Sprite> animationFrames;
 
     private Coroutine currentAnimationCoroutine;
@@ -235,10 +234,6 @@ public class CombatManager : MonoBehaviour
     void Update()
     {
 
-        // if (Input.GetKeyDown(KeyCode.Space))
-        // {
-        //     EndCombat();
-        // }
         if(Input.GetButton("Fire1") && playerCombatEndScreen)
         {
             EndPostScreen();
@@ -250,14 +245,12 @@ public class CombatManager : MonoBehaviour
         availableDiceNum.text = DiceDrawSystem.Instance.drawBag.Count.ToString();
         graveyardDiceNum.text = DiceDrawSystem.Instance.discardBag.Count.ToString();
         energyAmount.text = player.energyLevel.ToString() + "/" + player.maxEnergyLevel.ToString();
-
     }
 
     IEnumerator IncrementSpriteIndex()
     {
         while (true)
         {
-            Debug.Log("incremnet");
             yield return new WaitForSeconds(0.15f);
             spriteIndex++;
             spriteIndex %= animationFrames.Count;
@@ -265,11 +258,5 @@ public class CombatManager : MonoBehaviour
             enemyImage.sprite = animationFrames[spriteIndex];
         }
     }
-
-
-
-
-
-
 
 }
