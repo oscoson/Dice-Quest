@@ -6,7 +6,7 @@ using TMPro;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    [SerializeField] private Image healthBar;
+    public Image mainHealthBar;
     public Image secondaryHealthBar;
     public float currentHealth;
     public float maxHealth;
@@ -18,8 +18,8 @@ public class PlayerHealthBar : MonoBehaviour
         player = FindObjectOfType<Player>();
         currentHealth = player.currentHP;
         maxHealth = player.maxHP;
-        healthBar.fillAmount = currentHealth / maxHealth;
-        secondaryHealthBar.fillAmount = healthBar.fillAmount;
+        mainHealthBar.fillAmount = currentHealth / maxHealth;
+        secondaryHealthBar.fillAmount = mainHealthBar.fillAmount;
     }
 
     public void ResetSecondaryHealth()
@@ -27,11 +27,17 @@ public class PlayerHealthBar : MonoBehaviour
         secondaryHealthBar.fillAmount = 1;
     }
 
+    public void HealthBarSecondaryUpdate(int healAmount)
+    {
+        // only called when player is healed
+        secondaryHealthBar.fillAmount += healAmount * 0.01f;
+    }
+
     private void Update()
     {
         currentHealth = player.currentHP;
         maxHealth = player.maxHP;
-        healthBar.fillAmount = currentHealth / maxHealth;
+        mainHealthBar.fillAmount = currentHealth / maxHealth;
         if(currentHealth >= 0.9)
         {
             text.text = Mathf.Round((currentHealth * 10.0f) * 0.1f).ToString() + "/" + maxHealth.ToString();
@@ -49,7 +55,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (secondaryHealthBar.fillAmount > healthBar.fillAmount)
+        if (secondaryHealthBar.fillAmount > mainHealthBar.fillAmount)
         {
             secondaryHealthBar.fillAmount -= 0.0035f;
         }

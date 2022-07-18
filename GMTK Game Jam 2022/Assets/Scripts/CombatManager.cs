@@ -21,7 +21,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField] bool playerTurn = true;
     [SerializeField] float playerWaitTime = 1.5f;
     [SerializeField] bool playerCombatEndScreen = false;
-    [SerializeField] PlayerHealthBar healthBar;
+    public PlayerHealthBar healthBar;
     //[SerializeField] float endWaitTime = 2f;
     [Header("Enemy")]
     public Animator enemyAnimation;

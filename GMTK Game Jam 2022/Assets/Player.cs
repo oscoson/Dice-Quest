@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
         int healAmount = Mathf.Min(healNum, maxHP - currentHP);
         currentHP += healAmount;
         CombatManager.Instance.UpdateCombatReportText("You rolled to heal " + healAmount + " HP!");
+        CombatManager.Instance.healthBar.HealthBarSecondaryUpdate(healAmount);
         return healAmount;
     }
 
