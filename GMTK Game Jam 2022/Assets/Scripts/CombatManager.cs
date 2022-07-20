@@ -129,6 +129,10 @@ public class CombatManager : MonoBehaviour
 
     public void BeginTurn()
     {
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = true;
+        }
         UpdateCombatReportText("What will you do?");
         DrawDice();
     }
@@ -140,6 +144,10 @@ public class CombatManager : MonoBehaviour
 
     public void EnemyTurn()
     {
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = false;
+        }
         endButton.interactable = false;
         enemy.PerformAction();
         StartCoroutine(PlayerWaitingTime(2f));
@@ -198,6 +206,11 @@ public class CombatManager : MonoBehaviour
 
     public IEnumerator PlayerWaitingTime(float waitTime)
     {
+        for(int i = 0; i < diceSlots.Count; i++)
+        {
+            diceSlots[i].GetComponent<Button>().interactable = false;
+        }
+        endButton.interactable = false;
         yield return new WaitForSecondsRealtime(waitTime);
         endButton.interactable = true;
         BeginTurn();
