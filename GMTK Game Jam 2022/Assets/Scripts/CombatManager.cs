@@ -150,7 +150,7 @@ public class CombatManager : MonoBehaviour
         }
         endButton.interactable = false;
         enemy.PerformAction();
-        StartCoroutine(PlayerWaitingTime(2f));
+        StartCoroutine(PlayerWaitingTime(1.75f));
     }
 
     public void EndCombat()
@@ -192,6 +192,13 @@ public class CombatManager : MonoBehaviour
                 #else
                 Application.Quit();
                 #endif
+    }
+    public void LoseCombatThree()
+    {
+        Destroy(battleCanvas);
+        FindObjectOfType<DiceDrawSystem>().SelfDestruct();
+        Destroy(gameObject);
+        SceneManager.LoadScene(0);
     }
 
     public void EndPostScreen()

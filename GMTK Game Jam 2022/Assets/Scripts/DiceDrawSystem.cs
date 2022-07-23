@@ -163,6 +163,11 @@ public class DiceDrawSystem : MonoBehaviour
         playPile.Clear();
     }
 
+    public void SelfDestruct()
+    {
+        Destroy(gameObject);
+    }
+
 
 
 }

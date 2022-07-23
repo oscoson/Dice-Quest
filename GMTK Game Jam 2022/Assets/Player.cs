@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        CombatManager.Instance.LoseCombatTwo();
+        CombatManager.Instance.LoseCombatThree();
         //#if UNITY_EDITOR
         //UnityEditor.EditorApplication.isPlaying = false;
         //#else
