@@ -64,6 +64,7 @@ public class CombatManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         playAudio.Play("OverworldTheme");
         for (int i = 0; i < diceSlots.Count; i++)
         {
@@ -150,7 +151,16 @@ public class CombatManager : MonoBehaviour
         }
         endButton.interactable = false;
         enemy.PerformAction();
-        StartCoroutine(PlayerWaitingTime(1.75f));
+        if (player.currentHP > 0)
+        {
+            StartCoroutine(PlayerWaitingTime(1.75f));
+        }
+        else
+        {
+            StartCoroutine(player.shaker.Shake(0.15f, 4f));
+            UpdateCombatReportText("You have died!");
+            return;
+        }
     }
 
     public void EndCombat()
@@ -178,14 +188,11 @@ public class CombatManager : MonoBehaviour
         }
         endButton.interactable = false;
         healthBar.secondaryHealthBar.fillAmount = 0;
-        UpdateCombatReportText("You have died!");
-        Time.timeScale = 0;
         playAudio.StopLoop("BattleTheme");
-        playAudio.Play("DeathTheme");
-        deathCanvas.SetActive(true);
+        StartCoroutine(DeathTime(1f));
 
     }
-    public void LoseCombatTwo()
+    public void QuitGame()
     {
         #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
@@ -193,7 +200,15 @@ public class CombatManager : MonoBehaviour
                 Application.Quit();
                 #endif
     }
-    public void LoseCombatThree()
+    public void RestartGame()
+    {
+        Destroy(battleCanvas);
+        FindObjectOfType<DiceDrawSystem>().SelfDestruct();
+        Destroy(gameObject);
+        SceneManager.LoadScene(1);
+    }
+
+    public void GoToMainMenu()
     {
         Destroy(battleCanvas);
         FindObjectOfType<DiceDrawSystem>().SelfDestruct();
@@ -229,6 +244,13 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(waitTime);
         UpdateCombatReportText("Your Dice have been upgraded!");
         playerCombatEndScreen = true;
+    }
+
+    public IEnumerator DeathTime(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(2);
+        playAudio.Play("DeathTheme");
+        deathCanvas.SetActive(true);
     }
 
     public void DrawDice()

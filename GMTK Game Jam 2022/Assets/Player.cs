@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     public float blockValue = 0;
 
     public List<PlayableDie> diceInventory;
-    private ShakeUI shaker;
+    public ShakeUI shaker;
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         currentHP -= finaldmg;
         blockValue = 0;
         CombatManager.Instance.playAudio.Play("DamagePlayer");
-        if(currentHP - finaldmg > 0)
+        if(currentHP > 0)
         {
             StartCoroutine(shaker.Shake(0.15f, 4f));
         }
@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        CombatManager.Instance.LoseCombatThree();
+        CombatManager.Instance.LoseCombat();
         //#if UNITY_EDITOR
         //UnityEditor.EditorApplication.isPlaying = false;
         //#else
