@@ -248,7 +248,7 @@ public class CombatManager : MonoBehaviour
 
     public IEnumerator DeathTime(float waitTime)
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(1.25f);
         playAudio.Play("DeathTheme");
         deathCanvas.SetActive(true);
     }
