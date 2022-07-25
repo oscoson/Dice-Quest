@@ -12,7 +12,7 @@ public class DHolder : Enemy
     {
         Debug.Assert(player != null, "Need to call Init!!!!");
 
-        int randNum = Random.Range(0, 4);
+        int randNum = Random.Range(1, 4);
 
         if (tripleDamage) randNum = 0;
         blockFull = false;
@@ -20,9 +20,9 @@ public class DHolder : Enemy
         {
             case 0:
                 int dmg = Random.Range(1, 50) * (tripleDamage ? 3 : 1);
-                tripleDamage = false;
                 int actualDamage = player.InflictDamage(dmg);
                 CombatManager.Instance.UpdateCombatReportText($"{Name}'s super attack does " + actualDamage.ToString() + " HP");
+                tripleDamage = false;
                 damageTaken = 0;
                 break;
             case 1:
