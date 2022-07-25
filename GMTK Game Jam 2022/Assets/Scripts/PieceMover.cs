@@ -71,11 +71,19 @@ public class PieceMover : MonoBehaviour
                 switch (entity.GetEntityType())
                 {
                     case EntityType.Enemy:
+                        CombatManager.Instance.playAudio.Play("BattleTheme");
                         Debug.Log(entity.EnemyID);
+                        StartCombat(entity.EnemyID);
+                        break;
+                    case EntityType.Boss:
+                        CombatManager.Instance.playAudio.Play("BossTheme");
                         StartCombat(entity.EnemyID);
                         break;
                     case EntityType.Exit:
                         ExitLevel();
+                        break;
+                    case EntityType.FinalExit:
+                        CombatManager.Instance.GoToMainMenu();
                         break;
                 }
             }

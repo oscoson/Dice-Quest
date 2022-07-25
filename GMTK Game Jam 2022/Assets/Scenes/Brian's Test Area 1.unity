@@ -1869,7 +1869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1405597258}
-  entityType: 3
+  entityType: 4
   enemyID: 0
 --- !u!212 &1624743033
 SpriteRenderer:

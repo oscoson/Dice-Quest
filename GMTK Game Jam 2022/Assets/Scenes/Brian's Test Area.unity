@@ -5155,7 +5155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 1405597258}
-  entityType: 3
+  entityType: 4
   enemyID: 0
 --- !u!212 &1624743033
 SpriteRenderer:
@@ -5525,6 +5525,13 @@ MonoBehaviour:
     volume: 0.25
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: BossTheme
+    clip: {fileID: 8300000, guid: 1f50914340a341f48b449974957b93ef, type: 3}
+    mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
+    volume: 0.25
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: VictoryTheme
     clip: {fileID: 8300000, guid: f77025208ecedab4bab45cbe3c8ffc8f, type: 3}

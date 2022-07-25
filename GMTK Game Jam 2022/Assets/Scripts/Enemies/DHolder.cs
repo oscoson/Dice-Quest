@@ -26,7 +26,7 @@ public class DHolder : Enemy
                 break;
             case 1:
                 int returnedDamage = player.InflictDamage(damageTaken);
-                CombatManager.Instance.UpdateCombatReportText($"{Name} returns damage taken!    You are dealt {returnedDamage.ToString()} HP");
+                CombatManager.Instance.UpdateCombatReportText($"{Name} returns damage taken! You are dealt {returnedDamage.ToString()} HP");
                 damageTaken = 0;
                 break;
             case 2:
@@ -34,7 +34,7 @@ public class DHolder : Enemy
                 tripleDamage = true;
                 break;
             case 3:
-                CombatManager.Instance.UpdateCombatReportText($"{Name} intends to full block next turn!");
+                CombatManager.Instance.UpdateCombatReportText($"{Name} intends to full block this turn!");
                 blockFull = true;
                 break;
 

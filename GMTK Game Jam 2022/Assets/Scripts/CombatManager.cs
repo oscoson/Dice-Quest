@@ -123,19 +123,22 @@ public class CombatManager : MonoBehaviour
         //Play Audio
         playAudio.Pause("OverworldTheme");
         playAudio.Play("Encounter");
-        playAudio.Play("BattleTheme");
         UpdateCombatReportText($"{enemy.Name} blocks your way!");
         DrawDice();
     }
 
     public void BeginTurn()
     {
-        for(int i = 0; i < diceSlots.Count; i++)
+        // Keeps dialogue change from happening if player dies to dicewiz
+        if(player.currentHP > 0)
         {
-            diceSlots[i].GetComponent<Button>().interactable = true;
+            for(int i = 0; i < diceSlots.Count; i++)
+            {
+                diceSlots[i].GetComponent<Button>().interactable = true;
+            }
+            UpdateCombatReportText("What will you do?");
+            DrawDice();
         }
-        UpdateCombatReportText("What will you do?");
-        DrawDice();
     }
 
     public void EndTurn()
@@ -242,7 +245,7 @@ public class CombatManager : MonoBehaviour
     public IEnumerator EnemyDefeated(float waitTime)
     {
         yield return new WaitForSecondsRealtime(waitTime);
-        UpdateCombatReportText("Your Dice have been upgraded!");
+        UpdateCombatReportText("Your Dice have been upgraded! Left-Click to continue.");
         playerCombatEndScreen = true;
     }
 
@@ -289,7 +292,7 @@ public class CombatManager : MonoBehaviour
             }
             else if (DiceDrawSystem.Instance.playPile[i] != null && DiceDrawSystem.Instance.playPile[i].DiceType == "ExtraTurn")
             {
-                diceValues[i].text = "Skip Enemy Turn";
+                diceValues[i].text = "Roll Extra Turn";
             }
             else
                 diceValues[i].text = "";

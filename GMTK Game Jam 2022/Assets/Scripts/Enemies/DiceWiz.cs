@@ -15,10 +15,17 @@ public class DiceWiz : Enemy
     {
         for (int i = 0; i < 5; i++)
         {
-            int damage = strength;
-            int actualDamage = player.InflictDamage(damage);
-            CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + actualDamage.ToString() + " HP");
-            yield return new WaitForSeconds(0.1f);
+            if(CombatManager.Instance.healthBar.currentHealth > 0)
+            {
+                int damage = strength;
+                int actualDamage = player.InflictDamage(damage);
+                CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + actualDamage.ToString() + " HP");
+                yield return new WaitForSeconds(0.1f);
+            }
+            else
+            {
+                CombatManager.Instance.UpdateCombatReportText("You have died!");
+            }
         }
         strength = 1;
     }
