@@ -115,7 +115,8 @@ public class CombatManager : MonoBehaviour
         DiceDrawSystem.Instance.Init(player.diceInventory, player, enemy);
         DiceDrawSystem.Instance.ShuffleDrawPile();
         DiceDrawSystem.Instance.firstTurn = true;
-        //renenable dice slots
+        //renenable dice slots & values
+        player.blockValue = 0;
         for(int i = 0; i < diceSlots.Count; i++)
         {
             diceSlots[i].GetComponent<Button>().interactable = true;
