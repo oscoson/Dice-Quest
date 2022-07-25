@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BattleDiceKnight : Enemy
 {
-    bool doDoubleDamage = false;
+    [SerializeField] bool doDoubleDamage = false;
 
     public override void PerformAction()
     {
@@ -15,14 +15,23 @@ public class BattleDiceKnight : Enemy
         switch (randNum)
         {
             case 0:
-                int damage = Random.Range(40, 60) * (doDoubleDamage ? 2 : 1);
+                int damage = Random.Range(30, 51) * (doDoubleDamage ? 2 : 1);
+                Debug.Log("raw dmg: " + damage);
                 int actualDamage = player.InflictDamage(damage);
-                CombatManager.Instance.UpdateCombatReportText($"{Name} pierces you for " + actualDamage.ToString() + " HP");
+                Debug.Log("actual damage: " + actualDamage);
+                if (doDoubleDamage)
+                {
+                    CombatManager.Instance.UpdateCombatReportText($"{Name} ANGRILY PIERCES you for " + actualDamage.ToString() + " HP");
+                }
+                else
+                {
+                    CombatManager.Instance.UpdateCombatReportText($"{Name} PIERCES you for " + actualDamage.ToString() + " HP");
+                }
                 break;
             case 1:
                 int pokeDmg = Random.Range(10, 21);
                 int actPokeDamage = player.InflictDamage(pokeDmg);
-                CombatManager.Instance.UpdateCombatReportText($"{Name} pokes you for " + actPokeDamage.ToString() + " HP");
+                CombatManager.Instance.UpdateCombatReportText($"Luckily, {Name} POKES you for " + actPokeDamage.ToString() + " HP");
                 break;
         }
     }

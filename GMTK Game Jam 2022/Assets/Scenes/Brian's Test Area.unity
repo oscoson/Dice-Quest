@@ -5531,7 +5531,7 @@ MonoBehaviour:
     mixer: {fileID: 398065960514078596, guid: 1461cd61e57dbc7418d112ef6a67ccec, type: 2}
     volume: 0.25
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   - name: VictoryTheme
     clip: {fileID: 8300000, guid: f77025208ecedab4bab45cbe3c8ffc8f, type: 3}

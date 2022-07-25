@@ -38,6 +38,9 @@ public class DiceWiz : Enemy
         CombatManager.Instance.UpdateCombatReportText($"You dealed {dmg} damage!\n{Name}'s strength increased by 1!");
         StartCoroutine(hitAnimCancel(0.5f));
         //EnemyHealthBar.Instance.currentHealth = currentHp;
-        if (currentHp <= 0) Die();
+        if (currentHp <= 0) 
+        {
+            Die();
+        }
     }
 }
