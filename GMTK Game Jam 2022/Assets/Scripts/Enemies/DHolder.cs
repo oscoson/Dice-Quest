@@ -22,21 +22,25 @@ public class DHolder : Enemy
                 int dmg = Random.Range(1, 50) * (tripleDamage ? 3 : 1);
                 tripleDamage = false;
                 int actualDamage = player.InflictDamage(dmg);
-                CombatManager.Instance.UpdateCombatReportText($"{Name} attacks and damages you for " + actualDamage.ToString() + " HP");
+                CombatManager.Instance.UpdateCombatReportText($"{Name}'s super attack does " + actualDamage.ToString() + " HP");
+                damageTaken = 0;
                 break;
             case 1:
                 damageTaken = damageTaken / 2;
                 int returnedDamage = player.InflictDamage(damageTaken);
-                CombatManager.Instance.UpdateCombatReportText($"{Name} returns damage taken! You are dealt {returnedDamage.ToString()} HP");
+                CombatManager.Instance.UpdateCombatReportText($"{Name} returns half its damage taken! You are dealt {returnedDamage.ToString()} HP");
                 damageTaken = 0;
                 break;
             case 2:
-                CombatManager.Instance.UpdateCombatReportText($"{Name} intends to deal triple damage next turn!");
+                CombatManager.Instance.UpdateCombatReportText($"{Name} charges up a super attack for next turn!");
                 tripleDamage = true;
+                damageTaken = 0;
                 break;
             case 3:
+
                 CombatManager.Instance.UpdateCombatReportText($"{Name} intends to full block this turn!");
                 blockFull = true;
+                damageTaken = 0;
                 break;
 
         }
