@@ -28,7 +28,7 @@ public class DHolder : Enemy
             case 1:
                 damageTaken = damageTaken / 2;
                 int returnedDamage = player.InflictDamage(damageTaken);
-                CombatManager.Instance.UpdateCombatReportText($"{Name} returns half its damage taken! You are dealt {returnedDamage.ToString()} HP");
+                CombatManager.Instance.UpdateCombatReportText($"{Name} returns half its damage taken! You take {returnedDamage.ToString()} damage!");
                 damageTaken = 0;
                 break;
             case 2:
