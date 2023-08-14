@@ -1,5 +1,5 @@
 # Dice Quest (GMTK-Game-Jam-2022-Submission)
-This game was made as a submission to the GMTK Game Jam 2022 <br />
+This game was made as a submission to the 2022 GMTK Game Jam <br />
 Playable Demo: https://thenewgrandmaster.itch.io/gmtkgamejam2022
 _________________________________________________________________________________________________________________________________________________________________________
 <h5 class="text-center"><u><strong><h3>Post-Jam Update patch notes!</u></strong></h3>
